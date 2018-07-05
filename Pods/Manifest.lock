@@ -1,0 +1,58 @@
+PODS:
+  - Alamofire (4.7.2)
+  - AlamofireNetworkActivityIndicator (2.2.1):
+    - Alamofire (~> 4.7)
+  - AlamofireObjectMapper (5.1.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 3.3)
+  - CryptoSwift (0.7.2)
+  - FTIndicator (1.2.9):
+    - FTIndicator/FTNotificationIndicator (= 1.2.9)
+    - FTIndicator/FTProgressIndicator (= 1.2.9)
+    - FTIndicator/FTToastIndicator (= 1.2.9)
+  - FTIndicator/FTNotificationIndicator (1.2.9)
+  - FTIndicator/FTProgressIndicator (1.2.9)
+  - FTIndicator/FTToastIndicator (1.2.9)
+  - ObjectMapper (3.3.0)
+  - SDWebImage (4.4.1):
+    - SDWebImage/Core (= 4.4.1)
+  - SDWebImage/Core (4.4.1)
+  - SideMenu (4.0.0)
+  - SideMenuController (0.2.4)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireNetworkActivityIndicator (~> 2.0)
+  - AlamofireObjectMapper
+  - CryptoSwift (~> 0.7.1)
+  - FTIndicator
+  - SDWebImage (~> 4.0)
+  - SideMenu
+  - SideMenuController
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireNetworkActivityIndicator
+    - AlamofireObjectMapper
+    - CryptoSwift
+    - FTIndicator
+    - ObjectMapper
+    - SDWebImage
+    - SideMenu
+    - SideMenuController
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  AlamofireNetworkActivityIndicator: aeac50e6ecb78ec71a5f1f29098bcf4ec2962910
+  AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
+  CryptoSwift: cd2158be2bf639aabc63ec804707c7137c90157c
+  FTIndicator: f7f071fd159e5befa1d040a9ef2e3ab53fa9322c
+  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
+  SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
+  SideMenuController: b463d2b3aa58e2afe57f57a07938fa9a647894ca
+
+PODFILE CHECKSUM: 4e9b5dccfc460df34b749b660d2bb68b9e97fac7
+
+COCOAPODS: 1.5.3

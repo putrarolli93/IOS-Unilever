@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="header" rowHeight="73" id="UJI-HM-8YX" customClass="HeaderCell" customModule="unilever" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UJI-HM-8YX" id="IOc-pF-Qu3">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="72.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hijab" translatesAutoresizingMaskIntoConstraints="NO" id="VDc-3z-kTk">
+                        <rect key="frame" x="15" y="6.5" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="Jj0-51-YuD"/>
+                            <constraint firstAttribute="height" constant="60" id="NwW-Uy-bro"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toko Cantik" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDn-Me-P1G">
+                        <rect key="frame" x="90" y="22" width="215" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Jakarta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoc-U8-kz6">
+                        <rect key="frame" x="90" y="48" width="215" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="jaV-f3-tvV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.011764705882352941" green="0.60784313725490191" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="VDc-3z-kTk" secondAttribute="bottom" constant="6" id="1k1-Y2-5eQ"/>
+                    <constraint firstItem="pDn-Me-P1G" firstAttribute="leading" secondItem="VDc-3z-kTk" secondAttribute="trailing" constant="15" id="8bz-gu-CL5"/>
+                    <constraint firstItem="uoc-U8-kz6" firstAttribute="top" secondItem="pDn-Me-P1G" secondAttribute="bottom" constant="5" id="ArL-KR-wEc"/>
+                    <constraint firstItem="uoc-U8-kz6" firstAttribute="leading" secondItem="VDc-3z-kTk" secondAttribute="trailing" constant="15" id="TT7-o2-E4w"/>
+                    <constraint firstAttribute="trailing" secondItem="uoc-U8-kz6" secondAttribute="trailing" constant="15" id="Tlz-AM-1Js"/>
+                    <constraint firstAttribute="trailing" secondItem="pDn-Me-P1G" secondAttribute="trailing" constant="15" id="cXy-9i-tmo"/>
+                    <constraint firstItem="VDc-3z-kTk" firstAttribute="centerY" secondItem="IOc-pF-Qu3" secondAttribute="centerY" id="lLo-Ew-eI8"/>
+                    <constraint firstItem="pDn-Me-P1G" firstAttribute="top" secondItem="IOc-pF-Qu3" secondAttribute="top" constant="22" id="yA5-on-mcG"/>
+                    <constraint firstItem="VDc-3z-kTk" firstAttribute="leading" secondItem="IOc-pF-Qu3" secondAttribute="leading" constant="15" id="zVy-eE-zxc"/>
+                    <constraint firstItem="VDc-3z-kTk" firstAttribute="top" secondItem="IOc-pF-Qu3" secondAttribute="top" constant="6.5" id="zrH-Se-smq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="info_name" destination="uoc-U8-kz6" id="pUs-7r-cV1"/>
+                <outlet property="store_name" destination="pDn-Me-P1G" id="f7e-gK-IKy"/>
+                <outlet property="user_image" destination="VDc-3z-kTk" id="Yuc-aR-pOP"/>
+            </connections>
+            <point key="canvasLocation" x="40" y="100.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="hijab" width="300" height="300"/>
+    </resources>
+</document>

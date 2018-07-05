@@ -1,0 +1,6 @@
+framework module Pods_unilever {
+  umbrella header "Pods-unilever-umbrella.h"
+
+  export *
+  module * { export * }
+}
