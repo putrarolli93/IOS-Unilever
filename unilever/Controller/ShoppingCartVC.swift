@@ -11,12 +11,14 @@ import CoreData
 import SDWebImage
 import FTIndicator
 
-class ShoppingCartVC: UIViewController, UITableViewDelegate, UITableViewDataSource,deleteProductDelegate,ContinueOrderDelegate {
+class ShoppingCartVC: UIViewController, UITableViewDelegate, UITableViewDataSource,deleteProductDelegate,ContinueOrderDelegate,CreditLimitDelegate {
 
     @IBOutlet weak var shopping_total: UILabel!
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var order_btn: UIView!
+    var credit_limit: Bool = false
     var data_count: Int = 0
+    var _request_credit_limit: CreditLimitRequest = CreditLimitRequest()
     var chart: [[String]] = []
     var array: [[Int]] = []
     var shoopingCell: ShoopingCartCell = ShoopingCartCell()
@@ -106,15 +108,10 @@ class ShoppingCartVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func continueOrder(_ sender: Any) {
-        if chart.count != 0 {
-//            FTIndicator.showProgress(withMessage: "Loading")
-//            _request.chart = self.chart
-//            _request.req()
-            let web = OrderConfirmVC()
-            web.total_price = Int(shopping_total.text!)!
-            let navCon = UINavigationController()
-            navCon.viewControllers = [web]
-            self.present(navCon, animated: true, completion: nil)
+        _request_credit_limit.delegate = self
+        FTIndicator.showProgress(withMessage: "Loading..", userInteractionEnable: false)
+         DispatchQueue.main.async {
+            self._request_credit_limit.req()
         }
     }
     
@@ -310,6 +307,31 @@ class ShoppingCartVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         dismiss(animated: true, completion: {
         })
     }
+    
+    //MARK CREDIT LIMIT
+    func creditLimitSuccess(data: CreditLimitModel) {
+        if Int(Double(data.total_credit_limit)!) < Int(shopping_total.text!)! {
+            credit_limit = false
+        }else{
+            credit_limit = true
+        }
+        FTIndicator.dismissProgress()
+        if chart.count != 0 {
+            if credit_limit {
+                let web = OrderConfirmVC()
+                web.total_price = Int(shopping_total.text!)!
+                let navCon = UINavigationController()
+                navCon.viewControllers = [web]
+                self.present(navCon, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func creditLimitError(data: String) {
+        credit_limit = false
+        FTIndicator.dismissProgress()
+    }
+    
     
 }
 

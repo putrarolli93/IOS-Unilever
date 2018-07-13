@@ -19,6 +19,7 @@ class OrderReportVC: UIViewController,UITableViewDelegate, UITableViewDataSource
     var order_id: String = ""
     var _request: OrderDetailRequest = OrderDetailRequest()
     var order_detail: OrderDetailModel!
+    var rows: Int = 0
 
 
     override func viewDidLoad() {
@@ -59,6 +60,7 @@ class OrderReportVC: UIViewController,UITableViewDelegate, UITableViewDataSource
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderHeaderCell", for: indexPath) as! OrderHeaderCell
             cell.order_id.text = self.order_detail.order_id
+            
             return cell
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderProductCell", for: indexPath) as! OrderProductCell

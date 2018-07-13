@@ -91,6 +91,8 @@
             <viewLayoutGuide key="safeArea" id="Haa-Wc-Gt8"/>
             <size key="customSize" width="171" height="237"/>
             <connections>
+                <outlet property="btn_buy" destination="oOV-tB-U0e" id="baX-G1-jDV"/>
+                <outlet property="btn_buy_text" destination="5VP-vw-2oi" id="xVo-BV-emG"/>
                 <outlet property="product_image" destination="94g-1J-NbW" id="lkO-Wq-yni"/>
                 <outlet property="product_price" destination="LzF-aL-Tws" id="zWl-q8-OH1"/>
                 <outlet property="product_title" destination="mYa-rV-NLE" id="LbT-x4-HdA"/>

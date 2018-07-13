@@ -46,7 +46,7 @@ class OrderWebviewVC: UIViewController {
         }else{
             paymentMethod = 3
         }
-        TRANSIDMERCHANT = "\(20180704062948)"
+        TRANSIDMERCHANT = "20180704062948"
         let totalPurchase = "13000.00"
         
         self.WORDS = "\(totalPurchase)\(DOKU_MALL_ID)\(SHAREDKEY)\(TRANSIDMERCHANT)"

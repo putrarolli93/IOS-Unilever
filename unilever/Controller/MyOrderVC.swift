@@ -76,7 +76,9 @@ class MyOrderVC: UIViewController,UITableViewDelegate, UITableViewDataSource,MyO
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if myorder != nil {
-            return myorder.data.count
+            if myorder.data != nil {
+                return myorder.data.count
+            }
         }
         return 0
     }
@@ -87,7 +89,7 @@ class MyOrderVC: UIViewController,UITableViewDelegate, UITableViewDataSource,MyO
             cell.order_id.text = self.myorder.data[indexPath.row].order_status
             cell.order_date.text = self.myorder.data[indexPath.row].order_date
             cell.invoice_id.text = self.myorder.data[indexPath.row].order_id
-            cell.order_status.text = "Rp. \(String(describing: Int(self.myorder.data[indexPath.row].total)!.formatnumber()))"
+            cell.order_status.text = "Rp. \(Int(Double(self.myorder.data[indexPath.row].total)!).formatnumber())"
             return cell
         }
         return UITableViewCell()
@@ -96,6 +98,7 @@ class MyOrderVC: UIViewController,UITableViewDelegate, UITableViewDataSource,MyO
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let order = OrderReportVC()
         order.order_id = self.myorder.data[indexPath.row].order_id
+        order.rows = indexPath.row
         let navCon = UINavigationController()
         DefaultController.indexOftabbar = 1
         navCon.viewControllers = [order]

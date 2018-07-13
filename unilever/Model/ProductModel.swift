@@ -44,6 +44,10 @@ class ProductModelArray:Mappable {
     var product_discount: String = ""
     var product_photo_link: String = ""
     var product_photo: String = ""
+    var product_status: String = ""
+    var product_stock: String = ""
+    var supplier_id: String = ""
+    var buying_price: String = ""
     
     required convenience init?(map: Map){
         self.init()
@@ -63,6 +67,10 @@ class ProductModelArray:Mappable {
         product_discount    <- map["product_discount"]
         product_photo_link   <- map["product_photo_link"]
         product_photo    <- map["product_photo"]
+        product_status    <- map["product_status"]
+        product_stock    <- map["product_stock"]
+        supplier_id   <- map["supplier_id"]
+        buying_price    <- map["buying_price"]
     }
     
 }

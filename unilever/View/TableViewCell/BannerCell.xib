@@ -18,10 +18,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="141.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0rY-hC-Ne9">
+                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="0rY-hC-Ne9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner-2" translatesAutoresizingMaskIntoConstraints="NO" id="oET-Ck-zwJ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oET-Ck-zwJ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="142" id="Mt5-2a-ZTr"/>
@@ -50,7 +50,4 @@
             <point key="canvasLocation" x="34" y="103"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="banner-2" width="363" height="175"/>
-    </resources>
 </document>

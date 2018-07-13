@@ -16,7 +16,7 @@ class OrderPaymentMethodCell: UITableViewCell,UIPickerViewDelegate,UIPickerViewD
     
     @IBOutlet weak var btnProses: UIButton!
     @IBOutlet weak var inputPaymentInform: UITextField!
-    let title = ["Bayar Ditempat", "Giro", "Bank Transfer", "Kartu Kredit", "Pembayaran Tunai"]
+    var title = ["Bayar Ditempat", "Giro", "Bank Transfer", "Kartu Kredit", "Pembayaran Tunai"]
     let titlePickerView = UIPickerView()
     var delegate: ProsesPaymentDelegate!
     
@@ -62,6 +62,9 @@ class OrderPaymentMethodCell: UITableViewCell,UIPickerViewDelegate,UIPickerViewD
             btnProses.backgroundColor = UIColor.blue
         }
         inputPaymentInform.resignFirstResponder()
+        if title.count == 1 {
+            inputPaymentInform.text = "Bayar Ditempat"
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -90,7 +93,6 @@ class OrderPaymentMethodCell: UITableViewCell,UIPickerViewDelegate,UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
         if pickerView.tag == 1 {
             
             inputPaymentInform.text = title[row]

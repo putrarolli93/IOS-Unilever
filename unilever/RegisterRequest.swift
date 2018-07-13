@@ -25,12 +25,15 @@ class RegisterRequest {
     var outlet_address: String = ""
     var outlet_phone: String = ""
     var outlet_email: String = ""
+    var outlet_nik: String = ""
+    var outlet_npwp: String = ""
+    var outlet_npwp_address: String = ""
     
     var delegate: RegisterDelegate!
     
     func req() {
         let parameters: [String: Any] = [
-            "request_type" : 2,
+            "request_type" : 4,
             "data": [
                 "user_info" : [
                     "username": self.username,
@@ -42,11 +45,14 @@ class RegisterRequest {
                     "outlet_name": self.outlet_name,
                     "outlet_contact": self.outlet_contact,
                     "outlet_address": self.outlet_address,
-                    "outlet_city": "Tangerang selatan",
-                    "outlet_phone": "081219976562",
-                    "outlet_email": "zahra@gmail.com",
+                    "outlet_city": self.outlet_address,
+                    "outlet_phone": self.outlet_phone,
+                    "outlet_email": self.outlet_email,
                     "outlet_photo": "myOutlet.jpg",
-                    "outlet_term_of_payment": 4,
+                    "outlet_nik": self.outlet_nik,
+                    "outlet_npwp": self.outlet_npwp,
+                    "outlet_npwp_address": self.outlet_npwp_address,
+                    "outlet_term_of_payment": 7,
                     "outlet_credit_limit": 1500000
                 ]
             ]

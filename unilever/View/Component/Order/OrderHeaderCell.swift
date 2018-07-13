@@ -12,16 +12,12 @@ class OrderHeaderCell: UITableViewCell {
 
     @IBOutlet weak var order_id: UILabel!
     @IBOutlet weak var order_date: UILabel!
+    @IBOutlet weak var limit_payment: UILabel!
+    @IBOutlet weak var info: UILabel!
+    @IBOutlet weak var payment: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

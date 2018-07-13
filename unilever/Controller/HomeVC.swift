@@ -74,8 +74,7 @@ class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Produc
         _request.req()
         _requestBanner.delegate = self
         _requestBanner.req()
-        FTIndicator.showProgress(withMessage: "Loading..", userInteractionEnable: false)
-//        FTIndicator.showProgress(withMessage: "Loading")
+//        FTIndicator.showProgress(withMessage: "Loading..", userInteractionEnable: false)
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
         
@@ -186,6 +185,7 @@ class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Produc
     //MARK: BANNER REQUEST
     func bannerSuccess(data: BannerModel) {
         self.banner = data
+        self.myTableView.reloadData()
         FTIndicator.dismissProgress()
     }
     

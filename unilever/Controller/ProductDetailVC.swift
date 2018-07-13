@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 import CoreData
+import FTIndicator
 
 class ProductDetailVC: UIViewController,ProductDetailDelegate {
 
@@ -20,6 +21,7 @@ class ProductDetailVC: UIViewController,ProductDetailDelegate {
     @IBOutlet weak var product_price: UILabel!
     @IBOutlet weak var product_category: UILabel!
     @IBOutlet weak var product_brand: UILabel!
+    var credit_limit: Bool = false
     let label = UILabel(frame: CGRect(x: LoginVC.screenSize.width - 25, y: 0, width: 20, height: 20))
     
     
@@ -57,8 +59,6 @@ class ProductDetailVC: UIViewController,ProductDetailDelegate {
     
     @IBAction func orderAct(_ sender: Any) {
         save()
-//        HomeVC.selectedIndex = 1
-//        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
         let regis = ShoppingCartVC()
         let navCon = UINavigationController()
         DefaultController.indexOftabbar = 1
@@ -103,6 +103,10 @@ class ProductDetailVC: UIViewController,ProductDetailDelegate {
         } catch {
             print("Failed saving")
         }
+    }
+    
+    func limitCredit() -> Bool {
+        return self.credit_limit
     }
 
 }

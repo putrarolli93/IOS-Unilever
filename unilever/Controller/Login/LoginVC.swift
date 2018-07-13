@@ -39,6 +39,13 @@ class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegat
         self._request.req()
     }
     
+    @IBAction func forgotPassword(_ sender: Any) {
+        let forgot = ForgotPasswordVC()
+        let navCon = UINavigationController()
+        navCon.viewControllers = [forgot]
+        self.present(navCon, animated: true, completion: nil)
+    }
+    
     @IBAction func register(_ sender: Any) {
         let regis = RegisterVC()
         let navCon = UINavigationController()
@@ -99,7 +106,7 @@ class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegat
         let nc3 = UINavigationController(rootViewController: vc3)
         nc3.tabBarItem = UITabBarItem(title: "Tagihan", image: UIImage(named: "ic_order"),tag: 1)
         
-        let vc4 = UIViewController()
+        let vc4 = ProfileVC()
         vc4.view.backgroundColor = UIColor.blue
         //        vc4.title = "fourth"
         vc4.navigationItem.titleView = UIImageView(image: UIImage(named: "unilever_brand"))

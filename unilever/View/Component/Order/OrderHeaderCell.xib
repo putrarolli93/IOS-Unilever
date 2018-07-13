@@ -236,8 +236,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="info" destination="1Tm-J9-EJP" id="xHq-LU-eEN"/>
+                <outlet property="limit_payment" destination="WUV-Gx-G0d" id="eNi-ux-gJC"/>
                 <outlet property="order_date" destination="NTb-Nw-BOO" id="jJp-i3-PWt"/>
                 <outlet property="order_id" destination="IeY-uJ-YCR" id="y6A-FH-R3m"/>
+                <outlet property="payment" destination="Jnf-pL-kX5" id="uTN-TS-tjO"/>
             </connections>
             <point key="canvasLocation" x="34" y="192.5"/>
         </tableViewCell>

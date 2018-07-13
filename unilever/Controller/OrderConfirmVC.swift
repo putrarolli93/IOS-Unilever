@@ -76,6 +76,12 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         return 0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            tableView.backgroundColor = UIColor.red
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderOrderConfirmCell", for: indexPath) as! HeaderOrderConfirmCell
@@ -100,6 +106,10 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
             return cell
         }else if indexPath.section == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderPaymentMethodCell", for: indexPath) as! OrderPaymentMethodCell
+            if total_price < 500000 {
+                cell.title.removeAll()
+                cell.title.append("Bayar Ditempat")
+            }
             cell.delegate = self
             return cell
         }

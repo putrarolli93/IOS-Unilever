@@ -64,11 +64,13 @@ class ProductVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = ProductDetailVC()
-        vc.product_detail_string = self.productFilter[indexPath.row].product_id
-        let navCon = UINavigationController()
-        navCon.viewControllers = [vc]
-        self.present(navCon, animated: true, completion: nil)
+        if productFilter[indexPath.row].product_stock != "Unavailable" {
+            let vc = ProductDetailVC()
+            vc.product_detail_string = self.productFilter[indexPath.row].product_id
+            let navCon = UINavigationController()
+            navCon.viewControllers = [vc]
+            self.present(navCon, animated: true, completion: nil)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -85,7 +87,8 @@ class ProductVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "product", for: indexPath) as! ProductCollectionViewCell
         cell.loadView(indexPath.row, self.product, self.productFilter)
-        cell.index = indexPath.row
+
+//        cell.index = indexPath.row
         return cell
     }
     

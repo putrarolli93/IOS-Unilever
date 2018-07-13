@@ -78,6 +78,30 @@
 		BAA0937F20A4079700AC3B78 /* OrderTotalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA0937D20A4079700AC3B78 /* OrderTotalCell.xib */; };
 		BAA0938220A4394600AC3B78 /* InvoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0938020A4394600AC3B78 /* InvoiceCell.swift */; };
 		BAA0938320A4394600AC3B78 /* InvoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAA0938120A4394600AC3B78 /* InvoiceCell.xib */; };
+		BAAF8B6420F1AC6100FECD76 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B6220F1AC6100FECD76 /* ForgotPasswordVC.swift */; };
+		BAAF8B6520F1AC6100FECD76 /* ForgotPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAAF8B6320F1AC6100FECD76 /* ForgotPasswordVC.xib */; };
+		BAAF8B6720F3A42900FECD76 /* ForgotPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B6620F3A42900FECD76 /* ForgotPasswordRequest.swift */; };
+		BAAF8B6920F3A59E00FECD76 /* ForgotPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B6820F3A59E00FECD76 /* ForgotPasswordModel.swift */; };
+		BAAF8B6B20F3AEAD00FECD76 /* CreditLimitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B6A20F3AEAD00FECD76 /* CreditLimitRequest.swift */; };
+		BAAF8B6D20F3AFF700FECD76 /* CreditLimitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B6C20F3AFF700FECD76 /* CreditLimitModel.swift */; };
+		BAAF8B6F20F3DF8F00FECD76 /* ChangePasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B6E20F3DF8F00FECD76 /* ChangePasswordRequest.swift */; };
+		BAAF8B7120F5007500FECD76 /* GetProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B7020F5007400FECD76 /* GetProfileRequest.swift */; };
+		BAAF8B7320F5024500FECD76 /* GetProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B7220F5024500FECD76 /* GetProfileModel.swift */; };
+		BAAF8B7620F506AA00FECD76 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B7420F506AA00FECD76 /* ProfileVC.swift */; };
+		BAAF8B7720F506AA00FECD76 /* ProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAAF8B7520F506AA00FECD76 /* ProfileVC.xib */; };
+		BAAF8B7A20F5071400FECD76 /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B7820F5071400FECD76 /* ProfileImageCell.swift */; };
+		BAAF8B7B20F5071400FECD76 /* ProfileImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAAF8B7920F5071400FECD76 /* ProfileImageCell.xib */; };
+		BAAF8B7F20F51A6600FECD76 /* ProfileEditBtnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B7D20F51A6600FECD76 /* ProfileEditBtnCell.swift */; };
+		BAAF8B8020F51A6600FECD76 /* ProfileEditBtnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAAF8B7E20F51A6600FECD76 /* ProfileEditBtnCell.xib */; };
+		BAAF8B8320F51DAE00FECD76 /* ProfileInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B8120F51DAE00FECD76 /* ProfileInfoCell.swift */; };
+		BAAF8B8420F51DAE00FECD76 /* ProfileInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAAF8B8220F51DAE00FECD76 /* ProfileInfoCell.xib */; };
+		BAAF8B8720F5227600FECD76 /* ProfileBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B8520F5227600FECD76 /* ProfileBottomCell.swift */; };
+		BAAF8B8820F5227600FECD76 /* ProfileBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAAF8B8620F5227600FECD76 /* ProfileBottomCell.xib */; };
+		BAAF8B8B20F5370500FECD76 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B8920F5370500FECD76 /* ChangePasswordVC.swift */; };
+		BAAF8B8C20F5370500FECD76 /* ChangePasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAAF8B8A20F5370500FECD76 /* ChangePasswordVC.xib */; };
+		BAAF8B8F20F6F7AA00FECD76 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B8D20F6F7AA00FECD76 /* EditProfileVC.swift */; };
+		BAAF8B9020F6F7AA00FECD76 /* EditProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAAF8B8E20F6F7AA00FECD76 /* EditProfileVC.xib */; };
+		BAAF8B9220F6FE2C00FECD76 /* EditProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF8B9120F6FE2C00FECD76 /* EditProfileRequest.swift */; };
 		BABECC2520ED2DE4007C24BA /* Integer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABECC2420ED2DE4007C24BA /* Integer.swift */; };
 		BAC183C720ECC1B200A7509B /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC183C620ECC1B200A7509B /* BannerModel.swift */; };
 		BAD9059920E743C900A38C9C /* OrderWebviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD9059720E743C900A38C9C /* OrderWebviewVC.swift */; };
@@ -178,6 +202,30 @@
 		BAA0937D20A4079700AC3B78 /* OrderTotalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTotalCell.xib; sourceTree = "<group>"; };
 		BAA0938020A4394600AC3B78 /* InvoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceCell.swift; sourceTree = "<group>"; };
 		BAA0938120A4394600AC3B78 /* InvoiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceCell.xib; sourceTree = "<group>"; };
+		BAAF8B6220F1AC6100FECD76 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		BAAF8B6320F1AC6100FECD76 /* ForgotPasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordVC.xib; sourceTree = "<group>"; };
+		BAAF8B6620F3A42900FECD76 /* ForgotPasswordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRequest.swift; sourceTree = "<group>"; };
+		BAAF8B6820F3A59E00FECD76 /* ForgotPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordModel.swift; sourceTree = "<group>"; };
+		BAAF8B6A20F3AEAD00FECD76 /* CreditLimitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditLimitRequest.swift; sourceTree = "<group>"; };
+		BAAF8B6C20F3AFF700FECD76 /* CreditLimitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditLimitModel.swift; sourceTree = "<group>"; };
+		BAAF8B6E20F3DF8F00FECD76 /* ChangePasswordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordRequest.swift; sourceTree = "<group>"; };
+		BAAF8B7020F5007400FECD76 /* GetProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileRequest.swift; sourceTree = "<group>"; };
+		BAAF8B7220F5024500FECD76 /* GetProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfileModel.swift; sourceTree = "<group>"; };
+		BAAF8B7420F506AA00FECD76 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		BAAF8B7520F506AA00FECD76 /* ProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileVC.xib; sourceTree = "<group>"; };
+		BAAF8B7820F5071400FECD76 /* ProfileImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
+		BAAF8B7920F5071400FECD76 /* ProfileImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileImageCell.xib; sourceTree = "<group>"; };
+		BAAF8B7D20F51A6600FECD76 /* ProfileEditBtnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditBtnCell.swift; sourceTree = "<group>"; };
+		BAAF8B7E20F51A6600FECD76 /* ProfileEditBtnCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileEditBtnCell.xib; sourceTree = "<group>"; };
+		BAAF8B8120F51DAE00FECD76 /* ProfileInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoCell.swift; sourceTree = "<group>"; };
+		BAAF8B8220F51DAE00FECD76 /* ProfileInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInfoCell.xib; sourceTree = "<group>"; };
+		BAAF8B8520F5227600FECD76 /* ProfileBottomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBottomCell.swift; sourceTree = "<group>"; };
+		BAAF8B8620F5227600FECD76 /* ProfileBottomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileBottomCell.xib; sourceTree = "<group>"; };
+		BAAF8B8920F5370500FECD76 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
+		BAAF8B8A20F5370500FECD76 /* ChangePasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordVC.xib; sourceTree = "<group>"; };
+		BAAF8B8D20F6F7AA00FECD76 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		BAAF8B8E20F6F7AA00FECD76 /* EditProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileVC.xib; sourceTree = "<group>"; };
+		BAAF8B9120F6FE2C00FECD76 /* EditProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRequest.swift; sourceTree = "<group>"; };
 		BABECC2420ED2DE4007C24BA /* Integer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Integer.swift; sourceTree = "<group>"; };
 		BAC183C620ECC1B200A7509B /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		BAD9059720E743C900A38C9C /* OrderWebviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderWebviewVC.swift; sourceTree = "<group>"; };
@@ -254,6 +302,11 @@
 				BA06118320DAC2DA006AE204 /* MyOrderRequest.swift */,
 				BA32CC0B20E000A600E3486D /* OrderDetailRequest.swift */,
 				BA333F9520EC48E00056F8E7 /* BannerRequest.swift */,
+				BAAF8B6620F3A42900FECD76 /* ForgotPasswordRequest.swift */,
+				BAAF8B6A20F3AEAD00FECD76 /* CreditLimitRequest.swift */,
+				BAAF8B6E20F3DF8F00FECD76 /* ChangePasswordRequest.swift */,
+				BAAF8B7020F5007400FECD76 /* GetProfileRequest.swift */,
+				BAAF8B9120F6FE2C00FECD76 /* EditProfileRequest.swift */,
 			);
 			path = unilever;
 			sourceTree = "<group>";
@@ -270,6 +323,9 @@
 				BA06118120DAC249006AE204 /* MyOrderModel.swift */,
 				BA32CC0D20E0013C00E3486D /* OrderDetailModel.swift */,
 				BAC183C620ECC1B200A7509B /* BannerModel.swift */,
+				BAAF8B6820F3A59E00FECD76 /* ForgotPasswordModel.swift */,
+				BAAF8B6C20F3AFF700FECD76 /* CreditLimitModel.swift */,
+				BAAF8B7220F5024500FECD76 /* GetProfileModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -311,6 +367,10 @@
 				BAD9059820E743C900A38C9C /* OrderWebviewVC.xib */,
 				BAD9059B20E7F7B900A38C9C /* OrderConfirmVC.swift */,
 				BAD9059C20E7F7B900A38C9C /* OrderConfirmVC.xib */,
+				BAAF8B7420F506AA00FECD76 /* ProfileVC.swift */,
+				BAAF8B7520F506AA00FECD76 /* ProfileVC.xib */,
+				BAAF8B8D20F6F7AA00FECD76 /* EditProfileVC.swift */,
+				BAAF8B8E20F6F7AA00FECD76 /* EditProfileVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -322,6 +382,10 @@
 				2A58CD58209C32B60047B5FE /* LoginVC.xib */,
 				BADD719B20A0C3220050736F /* RegisterVC.swift */,
 				BADD719C20A0C3220050736F /* RegisterVC.xib */,
+				BAAF8B6220F1AC6100FECD76 /* ForgotPasswordVC.swift */,
+				BAAF8B6320F1AC6100FECD76 /* ForgotPasswordVC.xib */,
+				BAAF8B8920F5370500FECD76 /* ChangePasswordVC.swift */,
+				BAAF8B8A20F5370500FECD76 /* ChangePasswordVC.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -339,6 +403,7 @@
 		2A96AFFF20A002DB004EBD44 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				BAAF8B7C20F51A4300FECD76 /* Profile */,
 				2A96B00120A00310004EBD44 /* BannerCell.swift */,
 				2A96B00220A00310004EBD44 /* BannerCell.xib */,
 				2A96B00520A0081D004EBD44 /* BrandCell.swift */,
@@ -351,6 +416,8 @@
 				2A96B03120A02233004EBD44 /* ShoopingCartCell.xib */,
 				BA638F0E20B0772700E017BE /* CobaCell.swift */,
 				BA638F0F20B0772700E017BE /* CobaCell.xib */,
+				BAAF8B7820F5071400FECD76 /* ProfileImageCell.swift */,
+				BAAF8B7920F5071400FECD76 /* ProfileImageCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -407,6 +474,19 @@
 				BAD905A920E95C8500A38C9C /* OrderPaymentMethodCell.xib */,
 			);
 			path = Order;
+			sourceTree = "<group>";
+		};
+		BAAF8B7C20F51A4300FECD76 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BAAF8B7D20F51A6600FECD76 /* ProfileEditBtnCell.swift */,
+				BAAF8B7E20F51A6600FECD76 /* ProfileEditBtnCell.xib */,
+				BAAF8B8120F51DAE00FECD76 /* ProfileInfoCell.swift */,
+				BAAF8B8220F51DAE00FECD76 /* ProfileInfoCell.xib */,
+				BAAF8B8520F5227600FECD76 /* ProfileBottomCell.swift */,
+				BAAF8B8620F5227600FECD76 /* ProfileBottomCell.xib */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		BABECC2320ED2DD4007C24BA /* Extension */ = {
@@ -497,11 +577,14 @@
 			files = (
 				2A58CD5A209C32B70047B5FE /* LoginVC.xib in Resources */,
 				BAD9059A20E743C900A38C9C /* OrderWebviewVC.xib in Resources */,
+				BAAF8B7720F506AA00FECD76 /* ProfileVC.xib in Resources */,
 				2A96B00820A0081D004EBD44 /* BrandCell.xib in Resources */,
+				BAAF8B8820F5227600FECD76 /* ProfileBottomCell.xib in Resources */,
 				2A96AFFD20A0029A004EBD44 /* HomeVC.xib in Resources */,
 				BAD905A320E7F8C600A38C9C /* HeaderOrderConfirmCell.xib in Resources */,
 				2A96B00C20A008CB004EBD44 /* BrandsCollectionViewCell.xib in Resources */,
 				BAD905AB20E95C8500A38C9C /* OrderPaymentMethodCell.xib in Resources */,
+				BAAF8B6520F1AC6100FECD76 /* ForgotPasswordVC.xib in Resources */,
 				2A96B01820A009E5004EBD44 /* SpecialCollectionViewCell.xib in Resources */,
 				BADD719E20A0C3220050736F /* RegisterVC.xib in Resources */,
 				BAD905A720E94D4600A38C9C /* OrderInputInformCell.xib in Resources */,
@@ -517,7 +600,11 @@
 				2A96B00420A00310004EBD44 /* BannerCell.xib in Resources */,
 				2A96B02B20A00F52004EBD44 /* ProductCollectionViewCell.xib in Resources */,
 				BA638F1120B0772700E017BE /* CobaCell.xib in Resources */,
+				BAAF8B7B20F5071400FECD76 /* ProfileImageCell.xib in Resources */,
+				BAAF8B9020F6F7AA00FECD76 /* EditProfileVC.xib in Resources */,
+				BAAF8B8420F51DAE00FECD76 /* ProfileInfoCell.xib in Resources */,
 				BAA0937720A3FABC00AC3B78 /* OrderHeaderCell.xib in Resources */,
+				BAAF8B8020F51A6600FECD76 /* ProfileEditBtnCell.xib in Resources */,
 				BA06118020DAC017006AE204 /* MyOrderCell.xib in Resources */,
 				2A96B01420A00982004EBD44 /* SpecialCell.xib in Resources */,
 				BAA0938320A4394600AC3B78 /* InvoiceCell.xib in Resources */,
@@ -525,6 +612,7 @@
 				2A96B02120A00D79004EBD44 /* MenuListCell.xib in Resources */,
 				BAA0937F20A4079700AC3B78 /* OrderTotalCell.xib in Resources */,
 				BAA0937B20A4041000AC3B78 /* OrderProductCell.xib in Resources */,
+				BAAF8B8C20F5370500FECD76 /* ChangePasswordVC.xib in Resources */,
 				2A96B01D20A00D29004EBD44 /* HeaderCell.xib in Resources */,
 				BA06117C20DABB1B006AE204 /* MyOrderVC.xib in Resources */,
 			);
@@ -600,23 +688,34 @@
 				BADD71A920A1D5F30050736F /* Product.xcdatamodeld in Sources */,
 				BA06117F20DAC017006AE204 /* MyOrderCell.swift in Sources */,
 				2A96B03B20A05DBC004EBD44 /* LoginModel.swift in Sources */,
+				BAAF8B6F20F3DF8F00FECD76 /* ChangePasswordRequest.swift in Sources */,
 				BA32CC0C20E000A600E3486D /* OrderDetailRequest.swift in Sources */,
 				BAD905A220E7F8C600A38C9C /* HeaderOrderConfirmCell.swift in Sources */,
 				2A96B03720A039DB004EBD44 /* NoLogin.swift in Sources */,
+				BAAF8B8320F51DAE00FECD76 /* ProfileInfoCell.swift in Sources */,
 				BAA0936E20A3D8EC00AC3B78 /* PurchaseModel.swift in Sources */,
 				BA638F1020B0772700E017BE /* CobaCell.swift in Sources */,
+				BAAF8B7A20F5071400FECD76 /* ProfileImageCell.swift in Sources */,
+				BAAF8B8B20F5370500FECD76 /* ChangePasswordVC.swift in Sources */,
 				BA06117B20DABB1B006AE204 /* MyOrderVC.swift in Sources */,
+				BAAF8B6420F1AC6100FECD76 /* ForgotPasswordVC.swift in Sources */,
 				BA638F1D20B1D16300E017BE /* InvoiceModel.swift in Sources */,
 				2A96B02320A00DD6004EBD44 /* SideMenuBarVC.swift in Sources */,
 				2A58CD41209C12230047B5FE /* ViewController.swift in Sources */,
 				2A96B02A20A00F52004EBD44 /* ProductCollectionViewCell.swift in Sources */,
 				BADD719D20A0C3220050736F /* RegisterVC.swift in Sources */,
 				BABECC2520ED2DE4007C24BA /* Integer.swift in Sources */,
+				BAAF8B8720F5227600FECD76 /* ProfileBottomCell.swift in Sources */,
 				BAC183C720ECC1B200A7509B /* BannerModel.swift in Sources */,
 				BA32CC0E20E0013C00E3486D /* OrderDetailModel.swift in Sources */,
+				BAAF8B7120F5007500FECD76 /* GetProfileRequest.swift in Sources */,
+				BAAF8B7F20F51A6600FECD76 /* ProfileEditBtnCell.swift in Sources */,
 				BA06118220DAC249006AE204 /* MyOrderModel.swift in Sources */,
 				2A96B02020A00D79004EBD44 /* MenuListCell.swift in Sources */,
+				BAAF8B9220F6FE2C00FECD76 /* EditProfileRequest.swift in Sources */,
+				BAAF8B6720F3A42900FECD76 /* ForgotPasswordRequest.swift in Sources */,
 				BAA0936C20A3D81700AC3B78 /* ContinueOrderRequest.swift in Sources */,
+				BAAF8B6920F3A59E00FECD76 /* ForgotPasswordModel.swift in Sources */,
 				2A96B03220A02233004EBD44 /* ShoopingCartCell.swift in Sources */,
 				BADD71A420A18EE20050736F /* ProductModel.swift in Sources */,
 				BADD719A20A0AB7B0050736F /* CheckLogin.swift in Sources */,
@@ -624,6 +723,7 @@
 				BA333F9620EC48E00056F8E7 /* BannerRequest.swift in Sources */,
 				BAD9059920E743C900A38C9C /* OrderWebviewVC.swift in Sources */,
 				BAA0938220A4394600AC3B78 /* InvoiceCell.swift in Sources */,
+				BAAF8B8F20F6F7AA00FECD76 /* EditProfileVC.swift in Sources */,
 				2A96B02620A00E97004EBD44 /* ProductVC.swift in Sources */,
 				BA638F1620B17CAA00E017BE /* ProductDetailVC.swift in Sources */,
 				BA638F1320B15B9B00E017BE /* ProductBrandRequest.swift in Sources */,
@@ -641,13 +741,17 @@
 				2A58CD47209C12230047B5FE /* unilever.xcdatamodeld in Sources */,
 				2A96B01C20A00D29004EBD44 /* HeaderCell.swift in Sources */,
 				2A58CD59209C32B70047B5FE /* LoginVC.swift in Sources */,
+				BAAF8B6B20F3AEAD00FECD76 /* CreditLimitRequest.swift in Sources */,
 				BAD905A620E94D4600A38C9C /* OrderInputInformCell.swift in Sources */,
 				2A96B01320A00982004EBD44 /* SpecialCell.swift in Sources */,
+				BAAF8B7320F5024500FECD76 /* GetProfileModel.swift in Sources */,
 				2A58CD3F209C12230047B5FE /* AppDelegate.swift in Sources */,
 				2A96B00720A0081D004EBD44 /* BrandCell.swift in Sources */,
 				BAD9059D20E7F7B900A38C9C /* OrderConfirmVC.swift in Sources */,
 				2A96B01720A009E5004EBD44 /* SpecialCollectionViewCell.swift in Sources */,
 				BA06118420DAC2DA006AE204 /* MyOrderRequest.swift in Sources */,
+				BAAF8B6D20F3AFF700FECD76 /* CreditLimitModel.swift in Sources */,
+				BAAF8B7620F506AA00FECD76 /* ProfileVC.swift in Sources */,
 				BA638F2220B1D57300E017BE /* InvoiceVC.swift in Sources */,
 				2A96B00320A00310004EBD44 /* BannerCell.swift in Sources */,
 				2A96B00F20A0093E004EBD44 /* HeaderTypeCell.swift in Sources */,
@@ -780,13 +884,16 @@
 			baseConfigurationReference = 77643853EA01D658D4596BE6 /* Pods-unilever.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 265TZA7NAT;
+				DEVELOPMENT_TEAM = Q435FHR4KM;
 				INFOPLIST_FILE = unilever/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.UnileverApps.unilever;
+				PRODUCT_BUNDLE_IDENTIFIER = com.UnileverApps.unileverApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -797,13 +904,16 @@
 			baseConfigurationReference = 7433C353666B72197E0146BD /* Pods-unilever.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 265TZA7NAT;
+				DEVELOPMENT_TEAM = Q435FHR4KM;
 				INFOPLIST_FILE = unilever/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.UnileverApps.unilever;
+				PRODUCT_BUNDLE_IDENTIFIER = com.UnileverApps.unileverApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

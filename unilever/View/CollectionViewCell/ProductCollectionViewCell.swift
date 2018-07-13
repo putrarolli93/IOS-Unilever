@@ -15,8 +15,10 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var product_image: UIImageView!
     @IBOutlet weak var product_title: UILabel!
     @IBOutlet weak var product_price: UILabel!
-    @IBOutlet weak var btn_chart: UIButton!
-    var index: Int = 0
+    @IBOutlet weak var btn_buy: UIView!
+    @IBOutlet weak var btn_buy_text: UILabel!
+    
+//    var index: Int = 0
     var isRemove: Bool = true
     var data: ProductModel!
     
@@ -27,6 +29,12 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     func loadView(_ index: Int,_ data: ProductModel,_ data_filter: [ProductModelArray]!) {
         self.data = data
+        if data_filter[index].product_stock == "Unavailable" {
+            self.btn_buy.backgroundColor = UIColor.lightGray
+            self.btn_buy_text.text = "Tidak Tersedia"
+        }else{
+            
+        }
         let formater = NumberFormatter()
         formater.groupingSeparator = "."
         formater.numberStyle = .decimal
@@ -36,7 +44,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
         product_image.sd_setImage(with: URL(string: updatedUrl!), placeholderImage: UIImage(named: "placeholder.png"))
         product_title.text = data_filter[index].product_name
         product_price.text = "Rp. \(String(describing: formattedNumber!))"
-
     }
 
 //    @IBAction func addToCart(_ sender: Any) {

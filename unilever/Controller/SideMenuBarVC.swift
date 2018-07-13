@@ -61,7 +61,12 @@ class SideMenuBarVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             navCon.viewControllers = [regis]
             self.present(navCon, animated: true, completion: nil)
         }else if indexPath.row == 4 {
-            self.present(OrderReportVC(), animated: true, completion: nil)
+            myTableView.deselectRow(at: indexPath, animated: true)
+            let regis = ProfileVC()
+            let navCon = DefaultController()
+            DefaultController.indexOftabbar = 3
+            navCon.viewControllers = [regis]
+            self.present(navCon, animated: true, completion: nil)
         }else if indexPath.row == 5 {
             let prefs = UserDefaults.standard
             prefs.removeObject(forKey:"session")
@@ -79,6 +84,9 @@ class SideMenuBarVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             if UserDefaults.standard.array(forKey: "session") != nil {
                 cell.store_name.text = "\(UserDefaults.standard.array(forKey: "session")![1])"
                 cell.info_name.text = "\(UserDefaults.standard.array(forKey: "session")![2])"
+                if let image_photo: String = ProfileVC.image_photo {
+                     cell.user_image.sd_setImage(with: URL(string: image_photo), placeholderImage: UIImage(named: "placeholder.png"))
+                }
             }
             return cell
         }else{

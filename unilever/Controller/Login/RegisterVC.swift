@@ -8,11 +8,13 @@
 
 import UIKit
 import FTIndicator
+import Alamofire
 
 class RegisterVC: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate,RegisterDelegate {
 
     @IBOutlet weak var address: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var contact: UITextField!
@@ -21,6 +23,11 @@ class RegisterVC: UIViewController,UINavigationControllerDelegate,UIImagePickerC
     @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var upLoadImageBtn: UIButton!
+    @IBOutlet weak var npwp: UITextField!
+    @IBOutlet weak var npwp_address: UITextField!
+    @IBOutlet weak var nik: UITextField!
+    
+    
     let imagePicker = UIImagePickerController()
     var _request: RegisterRequest = RegisterRequest()
     let screenSize = UIScreen.main.bounds
@@ -41,8 +48,8 @@ class RegisterVC: UIViewController,UINavigationControllerDelegate,UIImagePickerC
     }
     
     @IBAction func RegisterAct(_ sender: Any) {
-        FTIndicator.showProgress(withMessage: "Loading")
         _request.delegate = self
+        validasi()
         self._request.outlet_name = self.name.text!
         self._request.outlet_contact = self.contact.text!
         self._request.outlet_address = self.address.text!
@@ -50,7 +57,72 @@ class RegisterVC: UIViewController,UINavigationControllerDelegate,UIImagePickerC
         self._request.outlet_email = self.email.text!
         self._request.username = self.username.text!
         self._request.password = self.password.text!
-        _request.req()
+        self._request.outlet_nik = self.nik.text!
+        self._request.outlet_npwp_address = self.npwp_address.text!
+        self._request.outlet_npwp = self.npwp.text!
+        if validasi() {
+            FTIndicator.showProgress(withMessage: "Loading")
+            _request.req()
+        }
+    }
+    
+    func validasi() -> Bool {
+        if self.name.text! == "" {
+            alert("nama tidak boleh kosong")
+            return false
+        }
+        if self.contact.text! == "" {
+            alert("kontak tidak boleh kosong")
+            return false
+        }
+        if self.address.text! == "" {
+            alert("alamat tidak boleh kosong")
+            return false
+        }
+        if self.phone.text! == "" {
+            alert("telepon tidak boleh kosong")
+            return false
+        }
+        if self.email.text! == "" {
+            alert("email tidak boleh kosong")
+            return false
+        }
+        if self.username.text! == "" {
+            alert("username tidak boleh kosong")
+            return false
+        }
+        if self.password.text! == "" {
+            alert("password tidak boleh kosong")
+            return false
+        }
+        if self.confirmPassword.text! == "" {
+            alert("password tidak boleh kosong")
+            return false
+        }
+        if self.nik.text! == "" {
+            alert("nik tidak boleh kosong")
+            return false
+        }
+        if self.npwp.text! == "" {
+            alert("npwp tidak boleh kosong")
+            return false
+        }
+        if self.npwp_address.text! == "" {
+            alert("alamat NPWP tidak boleh kosong")
+            return false
+        }
+        if self.password.text! != self.confirmPassword.text! {
+            alert("password harus cocok")
+            return false
+        }
+        
+        return true
+    }
+    
+    func alert(_ text: String) {
+        let alert = UIAlertController(title: "Alert", message: text, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil )
     }
     
     @IBAction func upLoadImageBtnPressed(_ sender: AnyObject) {
@@ -78,8 +150,33 @@ class RegisterVC: UIViewController,UINavigationControllerDelegate,UIImagePickerC
             myImageView.contentMode = .scaleAspectFit
             myImageView.image = pickedImage
         }
-        
-        
+        if let selectedImages = myImageView.image {
+            
+        }
+        let productImage:UIImage = myImageView.image!
+        let imageData = UIImageJPEGRepresentation(productImage, 0.2)!
+        let titleToSend = "OT-0000041"
+        let headers = [
+            "Content-Type": "application/form-data"
+        ]
+        Alamofire.upload(multipartFormData:{ multipartFormData in
+//            multipartFormData.append(imageData, withName: "image")
+            multipartFormData.append(imageData, withName: "profile_photo", fileName: "sample.jpg", mimeType: "image/jpeg")
+            multipartFormData.append(titleToSend.data(using: .utf8)!, withName: "outlet_id")},
+                         usingThreshold:UInt64.init(),
+                         to: "http://202.154.3.188/commerce/unilever-middleware/core-services/Profile/photo_upload",
+                         method:.post,
+                         headers:headers,
+                         encodingCompletion: { encodingResult in
+                            switch encodingResult {
+                            case .success(let upload, _, _):
+                                upload.responseJSON { response in
+                                    debugPrint(response)
+                                }
+                            case .failure(let encodingError):
+                                print(encodingError)
+                            }
+        })
         /*
          
          Swift Dictionary named “info”.
@@ -131,20 +228,11 @@ class RegisterVC: UIViewController,UINavigationControllerDelegate,UIImagePickerC
 }
 
 extension RegisterVC {
-    
     func setupNavigation() {
         navigationController?.defaultStyle()
-        title = "Register"
+        title = "Daftar"
         let leftBarButton = UIBarButtonItem(image: UIImage(named: "ic_backBtn"), style: .plain, target: self, action: #selector(popViewController))
         navigationItem.leftBarButtonItem = leftBarButton
     }
 }
 
-extension UINavigationController{
-    func defaultStyle(){
-        self.navigationBar.isTranslucent = false
-        self.navigationBar.barStyle = .black
-        self.navigationBar.barTintColor = UIColor.blue
-        self.navigationBar.tintColor = UIColor.white
-    }
-}
