@@ -19,17 +19,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="30.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1M-FG-xBt">
-                        <rect key="frame" x="15" y="7.5" width="20" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1M-FG-xBt">
+                        <rect key="frame" x="15" y="7.5" width="35" height="16"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="fWc-JX-tVm"/>
+                            <constraint firstAttribute="width" constant="35" id="fWc-JX-tVm"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dove Nutritive Shampo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNk-xa-VeM">
-                        <rect key="frame" x="40" y="7.5" width="180" height="16"/>
+                        <rect key="frame" x="50" y="7.5" width="180" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="180" id="sOO-Di-kBR"/>
                         </constraints>
@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp. 75.000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVK-dF-eNa">
-                        <rect key="frame" x="220" y="7.5" width="85" height="16"/>
+                        <rect key="frame" x="230" y="7.5" width="75" height="16"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                     <constraint firstItem="DVK-dF-eNa" firstAttribute="leading" secondItem="UNk-xa-VeM" secondAttribute="trailing" id="2BQ-WP-O6n"/>
                     <constraint firstAttribute="trailing" secondItem="DVK-dF-eNa" secondAttribute="trailing" constant="15" id="3h2-WX-GiB"/>
                     <constraint firstAttribute="bottom" secondItem="b1M-FG-xBt" secondAttribute="bottom" constant="7" id="5p7-T5-xPg"/>
-                    <constraint firstItem="UNk-xa-VeM" firstAttribute="leading" secondItem="b1M-FG-xBt" secondAttribute="trailing" constant="5" id="5wr-hQ-rHa"/>
+                    <constraint firstItem="UNk-xa-VeM" firstAttribute="leading" secondItem="b1M-FG-xBt" secondAttribute="trailing" id="5wr-hQ-rHa"/>
                     <constraint firstItem="b1M-FG-xBt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7.5" id="EZc-uD-cR8"/>
                     <constraint firstItem="DVK-dF-eNa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7.5" id="Jlt-VA-Mvt"/>
                     <constraint firstItem="UNk-xa-VeM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7.5" id="dXH-2y-n0W"/>

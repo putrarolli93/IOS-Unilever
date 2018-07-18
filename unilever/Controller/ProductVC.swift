@@ -19,6 +19,7 @@ class ProductVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataS
     var product: ProductModel!
     var productFilter: [ProductModelArray]!
     var brand_id: String = ""
+    var brand_name: String = ""
     let label = UILabel(frame: CGRect(x: LoginVC.screenSize.width - 25, y: 0, width: 20, height: 20))
     
     override func viewDidLoad() {
@@ -121,7 +122,7 @@ class ProductVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataS
 extension ProductVC {
     func setupNavigation() {
         navigationController?.defaultStyle()
-//        title = "Register"
+        title = self.brand_name
         let leftBarButton = UIBarButtonItem(image: UIImage(named: "ic_backBtn"), style: .plain, target: self, action: #selector(popViewController))
         //-------------------
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "cart"), style: .plain, target: self, action: #selector(chart))

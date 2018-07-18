@@ -1,16 +1,16 @@
 //
-//  OrderReportVC.swift
+//  OrderReportFinishVC.swift
 //  unilever
 //
-//  Created by putra rolli on 10/05/18.
+//  Created by putra rolli on 15/07/18.
 //  Copyright © 2018 putra. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class OrderReportVC: UIViewController,UITableViewDelegate, UITableViewDataSource, OrderDetailDelegate {
-
+class OrderReportFinishVC: UIViewController,UITableViewDelegate, UITableViewDataSource, OrderDetailDelegate {
+    
     private var myTableView: UITableView!
     var bounds = UIScreen.main.bounds
     var data_count: Int = 0
@@ -19,17 +19,17 @@ class OrderReportVC: UIViewController,UITableViewDelegate, UITableViewDataSource
     var order_id: String = ""
     var order_list: MyOrderModel!
     var _request: OrderDetailRequest = OrderDetailRequest()
-    var order_detail: OrderDetailModel!
+    var purchase: PurchaseModel!
     var rows: Int = 0
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
         _request.delegate = self
-        _request.req(self.order_id)
-//        fetchData()
-        myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height))
+//        _request.req(self.order_id)
+        //        fetchData()
+        myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height - 130))
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.register(UINib(nibName: "OrderHeaderCell", bundle: nil), forCellReuseIdentifier: "OrderHeaderCell")
@@ -39,8 +39,9 @@ class OrderReportVC: UIViewController,UITableViewDelegate, UITableViewDataSource
         self.view.addSubview(myTableView)
     }
     
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        if self.order_detail == nil {
+        if self.chart == nil {
             return 0
         }
         return 3
@@ -59,7 +60,7 @@ class OrderReportVC: UIViewController,UITableViewDelegate, UITableViewDataSource
         if section == 0 {
             return 1
         }else if section == 1 {
-            return self.order_detail.data.count
+            return self.chart.count
         }else if section == 2 {
             return 1
         }
@@ -69,29 +70,27 @@ class OrderReportVC: UIViewController,UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderHeaderCell", for: indexPath) as! OrderHeaderCell
-            cell.order_id.text = self.order_list.data[rows].order_id
-            cell.order_date.text = self.order_list.data[rows].order_date.stringTodateWithTime()
-            cell.limit_payment.text = self.order_list.data[rows].outlet_term_of_payment + " hari"
-            cell.info.text = self.order_list.data[rows].order_note
-            cell.payment.text = self.order_list.data[rows].order_payment_type
+            cell.order_id.text = self.purchase.data?.order_id
+            cell.order_date.text = self.purchase.data?.order_date
+            cell.limit_payment.text = (self.purchase.data?.outlet_term_of_payment)! + " hari"
+            cell.info.text = self.purchase.data?.order_notes
+            cell.payment.text = self.purchase.data?.order_pay_type
 
-            
-            
             return cell
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderProductCell", for: indexPath) as! OrderProductCell
-            if self.order_detail.data.count != 0 {
-                cell.product_qty.text = "\(self.order_detail.data[indexPath.row].product_qty) x "
-                cell.product_name.text = "\(self.order_detail.data[indexPath.row].product_name)"
-                cell.product_price.text = "Rp. \(Int(self.order_detail.data[indexPath.row].product_selling_price)!.formatnumber())"
+            if self.chart.count != 0 {
+                cell.product_qty.text = "\(self.chart[indexPath.row][1]) x "
+                cell.product_name.text = "\(self.chart[indexPath.row][0])"
+                cell.product_price.text = "Rp. \(Int(self.chart[indexPath.row][2])!.formatnumber())"
             }
             return cell
         }else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderTotalCell", for: indexPath) as! OrderTotalCell
-            let price_total = self.order_list.data[rows].subtotal
-            let price_ppn = (Int(Double(price_total)!) * 10) / 100
-            let total_price_after = Int(Double(price_total)!) + price_ppn
-            cell.price_total.text = "Rp. \(Int(Double(price_total)!).formatnumber())"
+            let price_total = self.purchase.data?.order_total
+            let price_ppn = (Int(price_total!)! * 10) / 100
+            let total_price_after = Int(price_total!)! + price_ppn
+            cell.price_total.text = "Rp. \(Int(price_total!)!.formatnumber())"
             cell.price_ppn.text = "Rp. \(price_ppn.formatnumber())"
             cell.total_price_3.text = "Rp. \(total_price_after.formatnumber())"
             return cell
@@ -139,7 +138,7 @@ class OrderReportVC: UIViewController,UITableViewDelegate, UITableViewDataSource
                 chart[i].append(_datecreated.product_name!)
                 chart[i].append(_datecreated.product_qty!)
                 chart[i].append(_datecreated.product_selling_price!)
-
+                
                 i = i + 1
             }
         }catch let err as NSError {
@@ -153,19 +152,28 @@ class OrderReportVC: UIViewController,UITableViewDelegate, UITableViewDataSource
         }
     }
     
+    @IBAction func orderFinish(_ sender: Any) {
+        deleteAllRecords()
+        let regis = HomeVC()
+        let navCon = DefaultController()
+        DefaultController.indexOftabbar = 0
+        navCon.viewControllers = [regis]
+        self.present(navCon, animated: true, completion: nil)
+    }
+    
     //MARK: Order Detail
     func OrderDetailSuccess(data: OrderDetailModel) {
-        self.order_detail = data
+//        self.order_detail = data
         self.myTableView.reloadData()
     }
     
     func OrderDetailError(data: String) {
         
     }
-
+    
 }
 
-extension OrderReportVC {
+extension OrderReportFinishVC {
     func setupNavigation() {
         navigationController?.defaultStyle()
         title = "Rincian Pembelian"

@@ -10,7 +10,7 @@ import UIKit
 
 class MyOrderCell: UITableViewCell {
     
-    @IBOutlet weak var order_id: UILabel!
+    @IBOutlet weak var order_total: UILabel!
     @IBOutlet weak var order_date: UILabel!
     @IBOutlet weak var invoice_id: UILabel!
     @IBOutlet weak var order_status: UILabel!

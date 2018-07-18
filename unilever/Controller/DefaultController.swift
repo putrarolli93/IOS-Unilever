@@ -75,7 +75,7 @@ class DefaultController: UINavigationController {
         nc3.tabBarItem = UITabBarItem(title: "Tagihan", image: UIImage(named: "ic_order"),tag: 1)
         
         let vc4 = ProfileVC()
-        vc4.view.backgroundColor = UIColor.blue
+        vc4.view.backgroundColor = UIColor.white
         //        vc4.title = "fourth"
         vc4.navigationItem.titleView = UIImageView(image: UIImage(named: "unilever_brand"))
         vc4.navigationItem.rightBarButtonItem = rightBarButton

@@ -9,7 +9,21 @@
 import UIKit
 import CoreData
 
-class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource,ProsesPaymentDelegate,InputInformTextDelegate {
+class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource,ProsesPaymentDelegate,InputInformTextDelegate,ContinueOrderDelegate {
+    
+    func OrderSuccess(data: PurchaseModel) {
+        let regis = OrderReportFinishVC()
+        regis.chart = self.chart
+        regis.purchase = data
+        let navCon = UINavigationController()
+        navCon.viewControllers = [regis]
+        self.present(navCon, animated: true, completion: nil)
+    }
+    
+    func OrderError(data: String) {
+        
+    }
+    
     
     var pickerView = UIPickerView()
     var pickOption = ["one", "two", "three", "seven", "fifteen"]
@@ -19,7 +33,8 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     var chart: [[String]] = []
     var total_price: Int = 0
     var order_id: String = ""
-    var _request: OrderDetailRequest = OrderDetailRequest()
+//    var _request: OrderDetailRequest = OrderDetailRequest()
+    var _request: ContinueOrderRequest = ContinueOrderRequest()
     var order_detail: OrderDetailModel!
     var textInform: String = ""
     var pickerPayment: String = ""
@@ -27,6 +42,7 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        _request.delegate = self
         setupNavigation()
         fetchData()
         myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: 500))
@@ -61,6 +77,15 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         return 5
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
@@ -89,16 +114,19 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderProductCell", for: indexPath) as! OrderProductCell
             if self.chart.count != 0 {
-                cell.product_qty.text = "\(self.chart[indexPath.row][1])"
+                cell.product_qty.text = "\(self.chart[indexPath.row][1]) x "
                 cell.product_name.text = "\(self.chart[indexPath.row][0])"
-                cell.product_price.text = "\(self.chart[indexPath.row][2])"
+                cell.product_price.text = "\(Int(self.chart[indexPath.row][2])!.formatnumber())"
             }
             return cell
         }else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderTotalCell", for: indexPath) as! OrderTotalCell
-            cell.price_total.text = "\(total_price)"
-            cell.price_ppn.text = "\(total_price * 10 / 100)"
-            cell.total_price_3.text = "\(total_price + Int(cell.price_ppn.text!)!)"
+            let price_total = total_price
+            let price_ppn = (total_price * 10) / 100
+            let total_price_after = price_total + price_ppn
+            cell.price_total.text = "Rp. \(price_total.formatnumber())"
+            cell.price_ppn.text = "Rp. \(price_ppn.formatnumber())"
+            cell.total_price_3.text = "Rp. \(total_price_after.formatnumber())"
             return cell
         }else if indexPath.section == 3 {
              let cell = tableView.dequeueReusableCell(withIdentifier: "OrderInputInformCell", for: indexPath) as! OrderInputInformCell
@@ -159,14 +187,18 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     //Mark: Payment method
     func prosesDidclick(_ string: String) {
-        let regis = OrderWebviewVC()
-        pickerPayment = string
-        regis.pickerPayment = pickerPayment
-        regis.textInform = textInform
-        regis.total = Double(total_price)
-        let navCon = UINavigationController()
-        navCon.viewControllers = [regis]
-        self.present(navCon, animated: true, completion: nil)
+        _request.chart = self.chart
+        _request.payment_type = string
+        _request.payment_total = "\(total_price)"
+        _request.req()
+//        let regis = OrderWebviewVC()
+//        pickerPayment = string
+//        regis.pickerPayment = pickerPayment
+//        regis.textInform = textInform
+//        regis.total = Double(total_price)
+//        let navCon = UINavigationController()
+//        navCon.viewControllers = [regis]
+//        self.present(navCon, animated: true, completion: nil)
     }
     
     //MARK: TextField

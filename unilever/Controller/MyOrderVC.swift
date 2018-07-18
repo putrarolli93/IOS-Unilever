@@ -74,6 +74,15 @@ class MyOrderVC: UIViewController,UITableViewDelegate, UITableViewDataSource,MyO
         return 1
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if myorder != nil {
             if myorder.data != nil {
@@ -86,10 +95,14 @@ class MyOrderVC: UIViewController,UITableViewDelegate, UITableViewDataSource,MyO
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "myordercell", for: indexPath) as! MyOrderCell
-            cell.order_id.text = self.myorder.data[indexPath.row].order_status
-            cell.order_date.text = self.myorder.data[indexPath.row].order_date
+            if self.myorder.data[indexPath.row].total.isEmpty {
+                cell.order_total.text = ""
+            }else{
+                cell.order_total.text = "Rp. \(Int(Double(self.myorder.data[indexPath.row].total)!).formatnumber())"
+            }
+            cell.order_date.text = self.myorder.data[indexPath.row].order_date.stringTodateWithTime()
             cell.invoice_id.text = self.myorder.data[indexPath.row].order_id
-            cell.order_status.text = "Rp. \(Int(Double(self.myorder.data[indexPath.row].total)!).formatnumber())"
+            cell.order_status.text = myorder.data[indexPath.row].order_status
             return cell
         }
         return UITableViewCell()
@@ -99,6 +112,7 @@ class MyOrderVC: UIViewController,UITableViewDelegate, UITableViewDataSource,MyO
         let order = OrderReportVC()
         order.order_id = self.myorder.data[indexPath.row].order_id
         order.rows = indexPath.row
+        order.order_list = self.myorder
         let navCon = UINavigationController()
         DefaultController.indexOftabbar = 1
         navCon.viewControllers = [order]

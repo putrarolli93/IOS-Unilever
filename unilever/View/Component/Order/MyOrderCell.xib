@@ -86,8 +86,8 @@
             <connections>
                 <outlet property="invoice_id" destination="av6-Q5-L4v" id="Mlv-L7-DQe"/>
                 <outlet property="order_date" destination="VIM-RQ-Vtn" id="74E-Cf-YFj"/>
-                <outlet property="order_id" destination="I5c-UA-oA4" id="E7Q-wM-UOr"/>
-                <outlet property="order_status" destination="43D-ks-FFE" id="nIX-k3-6o0"/>
+                <outlet property="order_status" destination="I5c-UA-oA4" id="UDd-V9-yGn"/>
+                <outlet property="order_total" destination="43D-ks-FFE" id="sAJ-ds-HIW"/>
             </connections>
             <point key="canvasLocation" x="34" y="155.5"/>
         </tableViewCell>

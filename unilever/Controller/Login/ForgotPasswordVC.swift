@@ -9,7 +9,7 @@
 import UIKit
 import FTIndicator
 
-class ForgotPasswordVC: UIViewController,ForgotPasswordDelegate {
+class ForgotPasswordVC: UIViewController,ForgotPasswordDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var numberTlpn: UITextField!
@@ -19,6 +19,13 @@ class ForgotPasswordVC: UIViewController,ForgotPasswordDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
+        email.delegate = self
+        numberTlpn.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
     @IBAction func sendDidClick(_ sender: Any) {

@@ -29,7 +29,7 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
         _request.username = "\(UserDefaults.standard.array(forKey: "session")![2])"
         _request.outlet_id = "\(UserDefaults.standard.array(forKey: "session")![0])"
         _request.req()
-        myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height))
+        myTableView = UITableView(frame: CGRect(x: 0, y: 20, width: bounds.size.width, height: bounds.size.height - 20))
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.register(UINib(nibName: "ProfileImageCell", bundle: nil), forCellReuseIdentifier: "ProfileImageCell")
@@ -55,6 +55,24 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if indexPath.section == 0 {
+//            return 144.0
+//        }else if indexPath.section == 1 {
+//            return 44.0
+//        }
+//        return 0
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
@@ -108,6 +126,7 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
         }else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileInfoCell", for: indexPath) as! ProfileInfoCell
             cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.frame.size.height = 77.0
             changeDataInfoType(indexPath.row,cell)
             if profile != nil {
                 changeDataInfo(indexPath.row,cell)
@@ -230,7 +249,7 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
                                         debugPrint(response)
                                         FTIndicator.dismissProgress()
                                         self.getImage = true
-                                        self.myTableView.reloadData()
+                                        self.loadData()
                                     }
                                 case .failure(let encodingError):
                                     print(encodingError)
@@ -255,7 +274,7 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
     //MARK: GET PROFILE
     func getProfileSuccess(data: GetProfileModel) {
         profile = data
-        myTableView.reloadData()
+        loadData()
     }
     
     func getProfileError(data: String) {
@@ -271,7 +290,10 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
         self.present(navCon, animated: true, completion: nil)
     }
     
-    
+    func loadData(){
+        myTableView.reloadData()
+        myTableView.sizeToFit()
+    }
     
 }
 

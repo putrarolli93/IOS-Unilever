@@ -27,12 +27,15 @@ class ContinueOrderRequest {
     var outlet_phone: String = ""
     var outlet_email: String = ""
     var chart: [[String]] = []
+    var payment_type: String = ""
+    var payment_note: String = ""
+    var payment_total: String = ""
     var params: [[String:Any]] = []
     
     var delegate: ContinueOrderDelegate!
     
     func req() {
-//        fetchData()
+        fetchData()
         let headers: HTTPHeaders = [
             "Authorization": "Info XXX",
             "Accept": "application/json",
@@ -43,23 +46,16 @@ class ContinueOrderRequest {
             "request_type": 7,
             "data": [
                 "order_info": [
-                    "username": "zahra",
-                    "outlet_id": "OT-0000002",
+                    "username": "\(UserDefaults.standard.array(forKey: "session")![2])",
+                    "outlet_id": "\(UserDefaults.standard.array(forKey: "session")![0])",
                     "order_disc": "0",
-                    "order_notes": "",
-                    "order_pay_type": "Bank Transfer",
-                    "order_subtotal": "36000",
-                    "order_total": "36000"
+                    "order_notes": "\(payment_note)",
+                    "order_pay_type": "\(payment_type)",
+                    "order_subtotal": "\(payment_total)",
+                    "order_total": "\(payment_total)"
                 ],
-                "order_detail": [
-                    [
-                        "product_id": "PR-0000001",
-                        "product_qty": "3",
-                        "product_pricelist": "48600",
-                        "product_discount": "9",
-                        "product_selling_price": "43800"
-                    ]
-                ]
+                "order_detail":
+                        params
             ]
         ]
         

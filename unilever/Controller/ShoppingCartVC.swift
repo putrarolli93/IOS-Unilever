@@ -142,7 +142,7 @@ class ShoppingCartVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func addLabel() {
         label.center = self.view.center
         label.textAlignment = .center
-        label.text = "Let's Order Now"
+        label.text = "Pesan Sekarang"
         self.view.addSubview(label)
     }
     

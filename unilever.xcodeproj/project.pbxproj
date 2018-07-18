@@ -66,6 +66,19 @@
 		BA638F1F20B1D2CF00E017BE /* InvoiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA638F1E20B1D2CF00E017BE /* InvoiceRequest.swift */; };
 		BA638F2220B1D57300E017BE /* InvoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA638F2020B1D57300E017BE /* InvoiceVC.swift */; };
 		BA638F2320B1D57300E017BE /* InvoiceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA638F2120B1D57300E017BE /* InvoiceVC.xib */; };
+		BA903FB020FB21EF000BC93D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA903FAF20FB21EF000BC93D /* StoreKit.framework */; };
+		BA903FB320FB43F5000BC93D /* OrderReportFinishVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA903FB120FB43F5000BC93D /* OrderReportFinishVC.swift */; };
+		BA903FB420FB43F5000BC93D /* OrderReportFinishVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA903FB220FB43F5000BC93D /* OrderReportFinishVC.xib */; };
+		BA903FB720FB6A25000BC93D /* InvoiceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA903FB520FB6A25000BC93D /* InvoiceDetailVC.swift */; };
+		BA903FB820FB6A25000BC93D /* InvoiceDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA903FB620FB6A25000BC93D /* InvoiceDetailVC.xib */; };
+		BA903FBA20FB774B000BC93D /* InvoiceDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA903FB920FB774B000BC93D /* InvoiceDetailRequest.swift */; };
+		BA903FBC20FB7857000BC93D /* InvoiceDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA903FBB20FB7857000BC93D /* InvoiceDetailModel.swift */; };
+		BA903FBF20FB8049000BC93D /* PaymentCodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA903FBD20FB8049000BC93D /* PaymentCodVC.swift */; };
+		BA903FC020FB8049000BC93D /* PaymentCodVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA903FBE20FB8049000BC93D /* PaymentCodVC.xib */; };
+		BA903FC220FC4746000BC93D /* DiskonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA903FC120FC4746000BC93D /* DiskonModel.swift */; };
+		BA903FC420FC47D0000BC93D /* DiskonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA903FC320FC47D0000BC93D /* DiskonRequest.swift */; };
+		BA903FC620FCF185000BC93D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA903FC520FCF185000BC93D /* String.swift */; };
+		BA903FC820FCF1BD000BC93D /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA903FC720FCF1BD000BC93D /* Date.swift */; };
 		BAA0936C20A3D81700AC3B78 /* ContinueOrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0936B20A3D81700AC3B78 /* ContinueOrderRequest.swift */; };
 		BAA0936E20A3D8EC00AC3B78 /* PurchaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0936D20A3D8EC00AC3B78 /* PurchaseModel.swift */; };
 		BAA0937120A3F33400AC3B78 /* OrderReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA0936F20A3F33400AC3B78 /* OrderReportVC.swift */; };
@@ -190,6 +203,19 @@
 		BA638F1E20B1D2CF00E017BE /* InvoiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceRequest.swift; sourceTree = "<group>"; };
 		BA638F2020B1D57300E017BE /* InvoiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceVC.swift; sourceTree = "<group>"; };
 		BA638F2120B1D57300E017BE /* InvoiceVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceVC.xib; sourceTree = "<group>"; };
+		BA903FAF20FB21EF000BC93D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		BA903FB120FB43F5000BC93D /* OrderReportFinishVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReportFinishVC.swift; sourceTree = "<group>"; };
+		BA903FB220FB43F5000BC93D /* OrderReportFinishVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderReportFinishVC.xib; sourceTree = "<group>"; };
+		BA903FB520FB6A25000BC93D /* InvoiceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailVC.swift; sourceTree = "<group>"; };
+		BA903FB620FB6A25000BC93D /* InvoiceDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceDetailVC.xib; sourceTree = "<group>"; };
+		BA903FB920FB774B000BC93D /* InvoiceDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailRequest.swift; sourceTree = "<group>"; };
+		BA903FBB20FB7857000BC93D /* InvoiceDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailModel.swift; sourceTree = "<group>"; };
+		BA903FBD20FB8049000BC93D /* PaymentCodVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCodVC.swift; sourceTree = "<group>"; };
+		BA903FBE20FB8049000BC93D /* PaymentCodVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentCodVC.xib; sourceTree = "<group>"; };
+		BA903FC120FC4746000BC93D /* DiskonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskonModel.swift; sourceTree = "<group>"; };
+		BA903FC320FC47D0000BC93D /* DiskonRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskonRequest.swift; sourceTree = "<group>"; };
+		BA903FC520FCF185000BC93D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		BA903FC720FCF1BD000BC93D /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		BAA0936B20A3D81700AC3B78 /* ContinueOrderRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueOrderRequest.swift; sourceTree = "<group>"; };
 		BAA0936D20A3D8EC00AC3B78 /* PurchaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseModel.swift; sourceTree = "<group>"; };
 		BAA0936F20A3F33400AC3B78 /* OrderReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReportVC.swift; sourceTree = "<group>"; };
@@ -254,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5DECCAFF4523115468AA9C9 /* Pods_unilever.framework in Frameworks */,
+				BA903FB020FB21EF000BC93D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +334,8 @@
 				BAAF8B6E20F3DF8F00FECD76 /* ChangePasswordRequest.swift */,
 				BAAF8B7020F5007400FECD76 /* GetProfileRequest.swift */,
 				BAAF8B9120F6FE2C00FECD76 /* EditProfileRequest.swift */,
+				BA903FB920FB774B000BC93D /* InvoiceDetailRequest.swift */,
+				BA903FC320FC47D0000BC93D /* DiskonRequest.swift */,
 			);
 			path = unilever;
 			sourceTree = "<group>";
@@ -326,6 +355,8 @@
 				BAAF8B6820F3A59E00FECD76 /* ForgotPasswordModel.swift */,
 				BAAF8B6C20F3AFF700FECD76 /* CreditLimitModel.swift */,
 				BAAF8B7220F5024500FECD76 /* GetProfileModel.swift */,
+				BA903FBB20FB7857000BC93D /* InvoiceDetailModel.swift */,
+				BA903FC120FC4746000BC93D /* DiskonModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -371,6 +402,12 @@
 				BAAF8B7520F506AA00FECD76 /* ProfileVC.xib */,
 				BAAF8B8D20F6F7AA00FECD76 /* EditProfileVC.swift */,
 				BAAF8B8E20F6F7AA00FECD76 /* EditProfileVC.xib */,
+				BA903FB120FB43F5000BC93D /* OrderReportFinishVC.swift */,
+				BA903FB220FB43F5000BC93D /* OrderReportFinishVC.xib */,
+				BA903FB520FB6A25000BC93D /* InvoiceDetailVC.swift */,
+				BA903FB620FB6A25000BC93D /* InvoiceDetailVC.xib */,
+				BA903FBD20FB8049000BC93D /* PaymentCodVC.swift */,
+				BA903FBE20FB8049000BC93D /* PaymentCodVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -493,6 +530,8 @@
 			isa = PBXGroup;
 			children = (
 				BABECC2420ED2DE4007C24BA /* Integer.swift */,
+				BA903FC520FCF185000BC93D /* String.swift */,
+				BA903FC720FCF1BD000BC93D /* Date.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -509,6 +548,7 @@
 		D764B05B0203CE832C9B7E5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA903FAF20FB21EF000BC93D /* StoreKit.framework */,
 				1BD588BA4B9C542C85355244 /* Pods_unilever.framework */,
 			);
 			name = Frameworks;
@@ -548,7 +588,12 @@
 				TargetAttributes = {
 					2A58CD3A209C12230047B5FE = {
 						CreatedOnToolsVersion = 9.0.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -588,6 +633,7 @@
 				2A96B01820A009E5004EBD44 /* SpecialCollectionViewCell.xib in Resources */,
 				BADD719E20A0C3220050736F /* RegisterVC.xib in Resources */,
 				BAD905A720E94D4600A38C9C /* OrderInputInformCell.xib in Resources */,
+				BA903FB820FB6A25000BC93D /* InvoiceDetailVC.xib in Resources */,
 				2A58CD4C209C12230047B5FE /* LaunchScreen.storyboard in Resources */,
 				2A96B03320A02233004EBD44 /* ShoopingCartCell.xib in Resources */,
 				2A58CD49209C12230047B5FE /* Assets.xcassets in Resources */,
@@ -604,12 +650,14 @@
 				BAAF8B9020F6F7AA00FECD76 /* EditProfileVC.xib in Resources */,
 				BAAF8B8420F51DAE00FECD76 /* ProfileInfoCell.xib in Resources */,
 				BAA0937720A3FABC00AC3B78 /* OrderHeaderCell.xib in Resources */,
+				BA903FB420FB43F5000BC93D /* OrderReportFinishVC.xib in Resources */,
 				BAAF8B8020F51A6600FECD76 /* ProfileEditBtnCell.xib in Resources */,
 				BA06118020DAC017006AE204 /* MyOrderCell.xib in Resources */,
 				2A96B01420A00982004EBD44 /* SpecialCell.xib in Resources */,
 				BAA0938320A4394600AC3B78 /* InvoiceCell.xib in Resources */,
 				BA638F2320B1D57300E017BE /* InvoiceVC.xib in Resources */,
 				2A96B02120A00D79004EBD44 /* MenuListCell.xib in Resources */,
+				BA903FC020FB8049000BC93D /* PaymentCodVC.xib in Resources */,
 				BAA0937F20A4079700AC3B78 /* OrderTotalCell.xib in Resources */,
 				BAA0937B20A4041000AC3B78 /* OrderProductCell.xib in Resources */,
 				BAAF8B8C20F5370500FECD76 /* ChangePasswordVC.xib in Resources */,
@@ -681,9 +729,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA638F1B20B1956D00E017BE /* ProductDetailModel.swift in Sources */,
+				BA903FC220FC4746000BC93D /* DiskonModel.swift in Sources */,
 				BAA0937120A3F33400AC3B78 /* OrderReportVC.swift in Sources */,
 				BAD905AA20E95C8500A38C9C /* OrderPaymentMethodCell.swift in Sources */,
 				BA06117820D7286F006AE204 /* DefaultController.swift in Sources */,
+				BA903FB720FB6A25000BC93D /* InvoiceDetailVC.swift in Sources */,
 				2A96B03920A059C8004EBD44 /* LoginRequest.swift in Sources */,
 				BADD71A920A1D5F30050736F /* Product.xcdatamodeld in Sources */,
 				BA06117F20DAC017006AE204 /* MyOrderCell.swift in Sources */,
@@ -693,17 +743,20 @@
 				BAD905A220E7F8C600A38C9C /* HeaderOrderConfirmCell.swift in Sources */,
 				2A96B03720A039DB004EBD44 /* NoLogin.swift in Sources */,
 				BAAF8B8320F51DAE00FECD76 /* ProfileInfoCell.swift in Sources */,
+				BA903FC420FC47D0000BC93D /* DiskonRequest.swift in Sources */,
 				BAA0936E20A3D8EC00AC3B78 /* PurchaseModel.swift in Sources */,
 				BA638F1020B0772700E017BE /* CobaCell.swift in Sources */,
 				BAAF8B7A20F5071400FECD76 /* ProfileImageCell.swift in Sources */,
 				BAAF8B8B20F5370500FECD76 /* ChangePasswordVC.swift in Sources */,
 				BA06117B20DABB1B006AE204 /* MyOrderVC.swift in Sources */,
 				BAAF8B6420F1AC6100FECD76 /* ForgotPasswordVC.swift in Sources */,
+				BA903FBC20FB7857000BC93D /* InvoiceDetailModel.swift in Sources */,
 				BA638F1D20B1D16300E017BE /* InvoiceModel.swift in Sources */,
 				2A96B02320A00DD6004EBD44 /* SideMenuBarVC.swift in Sources */,
 				2A58CD41209C12230047B5FE /* ViewController.swift in Sources */,
 				2A96B02A20A00F52004EBD44 /* ProductCollectionViewCell.swift in Sources */,
 				BADD719D20A0C3220050736F /* RegisterVC.swift in Sources */,
+				BA903FBF20FB8049000BC93D /* PaymentCodVC.swift in Sources */,
 				BABECC2520ED2DE4007C24BA /* Integer.swift in Sources */,
 				BAAF8B8720F5227600FECD76 /* ProfileBottomCell.swift in Sources */,
 				BAC183C720ECC1B200A7509B /* BannerModel.swift in Sources */,
@@ -738,8 +791,11 @@
 				BA638F1920B1948B00E017BE /* ProductDetailRequest.swift in Sources */,
 				BA638F1F20B1D2CF00E017BE /* InvoiceRequest.swift in Sources */,
 				BADD71A020A160DA0050736F /* RegisterRequest.swift in Sources */,
+				BA903FB320FB43F5000BC93D /* OrderReportFinishVC.swift in Sources */,
+				BA903FC620FCF185000BC93D /* String.swift in Sources */,
 				2A58CD47209C12230047B5FE /* unilever.xcdatamodeld in Sources */,
 				2A96B01C20A00D29004EBD44 /* HeaderCell.swift in Sources */,
+				BA903FBA20FB774B000BC93D /* InvoiceDetailRequest.swift in Sources */,
 				2A58CD59209C32B70047B5FE /* LoginVC.swift in Sources */,
 				BAAF8B6B20F3AEAD00FECD76 /* CreditLimitRequest.swift in Sources */,
 				BAD905A620E94D4600A38C9C /* OrderInputInformCell.swift in Sources */,
@@ -751,6 +807,7 @@
 				2A96B01720A009E5004EBD44 /* SpecialCollectionViewCell.swift in Sources */,
 				BA06118420DAC2DA006AE204 /* MyOrderRequest.swift in Sources */,
 				BAAF8B6D20F3AFF700FECD76 /* CreditLimitModel.swift in Sources */,
+				BA903FC820FCF1BD000BC93D /* Date.swift in Sources */,
 				BAAF8B7620F506AA00FECD76 /* ProfileVC.swift in Sources */,
 				BA638F2220B1D57300E017BE /* InvoiceVC.swift in Sources */,
 				2A96B00320A00310004EBD44 /* BannerCell.swift in Sources */,
@@ -884,16 +941,16 @@
 			baseConfigurationReference = 77643853EA01D658D4596BE6 /* Pods-unilever.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = Q435FHR4KM;
 				INFOPLIST_FILE = unilever/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.UnileverApps.unileverApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1427981d-1cd7-4715-8eae-9af53f78a183";
+				PROVISIONING_PROFILE_SPECIFIER = unilever_1;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -904,16 +961,16 @@
 			baseConfigurationReference = 7433C353666B72197E0146BD /* Pods-unilever.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = Q435FHR4KM;
 				INFOPLIST_FILE = unilever/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.UnileverApps.unileverApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "1427981d-1cd7-4715-8eae-9af53f78a183";
+				PROVISIONING_PROFILE_SPECIFIER = unilever_1;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

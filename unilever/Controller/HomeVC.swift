@@ -11,8 +11,9 @@ import FTIndicator
 
 class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource,ProductBrandDelegate,BrandSelectDelegate,BannerDelegate {
     
-    func brandSelected(_ brand_id: String) {
+    func brandSelected(_ brand_id: String, _ brand_name: String) {
         let regis = ProductVC()
+        regis.brand_name = brand_name
         regis.brand_id = brand_id
         let navCon = UINavigationController()
         navCon.viewControllers = [regis]
@@ -23,7 +24,7 @@ class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Produc
         self.brand = brand
         let row = (brand?.data.count)! / 3
         let rowProduct = (brand?.data.count)! % 3
-        if rowProduct == 1 {
+        if rowProduct != 0 {
             HomeVC.RowCountProduct = row + 1
         }else{
             HomeVC.RowCountProduct = row
@@ -64,6 +65,7 @@ class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Produc
     var brand: ProductBrandModel!
     let label = UILabel(frame: CGRect(x: LoginVC.screenSize.width - 25, y: 0, width: 20, height: 20))
     let label2 = UILabel(frame: CGRect(x: LoginVC.screenSize.width - 85, y: 0, width: 20, height: 20))
+    var bounds = UIScreen.main.bounds
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,18 +78,18 @@ class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Produc
         _requestBanner.req()
 //        FTIndicator.showProgress(withMessage: "Loading..", userInteractionEnable: false)
         let displayWidth: CGFloat = self.view.frame.width
-        let displayHeight: CGFloat = self.view.frame.height
+//        let displayHeight: CGFloat = self.view.frame.height
         
-        myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: displayHeight))
-        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: displayWidth, height: bounds.height + 49))
+//        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         let nib5 = UINib(nibName: "BannerCell", bundle: nil)
         myTableView.register(nib5, forCellReuseIdentifier: "banner")
         let nib4 = UINib(nibName: "BrandCell", bundle: nil)
         myTableView.register(nib4, forCellReuseIdentifier: "brandCell")
-        let nib3 = UINib(nibName: "HeaderTypeCell", bundle: nil)
-        myTableView.register(nib3, forCellReuseIdentifier: "specialOffer")
-        let nib2 = UINib(nibName: "SpecialCell", bundle: nil)
-        myTableView.register(nib2, forCellReuseIdentifier: "specialCell")
+//        let nib3 = UINib(nibName: "HeaderTypeCell", bundle: nil)
+//        myTableView.register(nib3, forCellReuseIdentifier: "specialOffer")
+//        let nib2 = UINib(nibName: "SpecialCell", bundle: nil)
+//        myTableView.register(nib2, forCellReuseIdentifier: "specialCell")
         myTableView.dataSource = self
         myTableView.backgroundColor = UIColor.lightText
         myTableView.delegate = self
@@ -152,10 +154,19 @@ class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Produc
         }
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+//    {
+//        return UITableViewAutomaticDimension
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
@@ -167,8 +178,8 @@ class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Produc
             return cell
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "brandCell", for: indexPath) as! BrandCell
-            cell.collectionCell.frame.size.width = self.view.frame.width
-            cell.collectionCell.frame.size.height = self.view.frame.height
+//            cell.collectionCell.frame.size.width = self.view.frame.width
+//            cell.collectionCell.frame.size.height = self.view.frame.height
             cell.selectionStyle = .none
             cell.delegate = self
             if self.brand != nil {

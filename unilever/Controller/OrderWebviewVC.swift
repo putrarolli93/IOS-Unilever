@@ -19,7 +19,7 @@ class OrderWebviewVC: UIViewController {
     @IBOutlet weak var webView: UIWebView!
     var pickerPayment: String = ""
     var textInform: String = ""
-    var total: Double = 0
+    var total: Double = 0.00
     var paymentMethod: Int = 0
     var DOKU_MALL_ID: String = "5865"
     var CHAINMERCHANT: String = "NA"
@@ -39,7 +39,7 @@ class OrderWebviewVC: UIViewController {
             paymentMethod = 1
         }else if pickerPayment == "Giro" {
             paymentMethod = 2
-        }else if pickerPayment == "Bank Transfer" {
+        }else if pickerPayment == "Transfer Bank" {
             paymentMethod = 36
         }else if pickerPayment == "Kartu Kredit" {
             paymentMethod = 15
@@ -47,7 +47,7 @@ class OrderWebviewVC: UIViewController {
             paymentMethod = 3
         }
         TRANSIDMERCHANT = "20180704062948"
-        let totalPurchase = "13000.00"
+        let totalPurchase = "\(total)0"
         
         self.WORDS = "\(totalPurchase)\(DOKU_MALL_ID)\(SHAREDKEY)\(TRANSIDMERCHANT)"
         let newWords = WORDS.sha1()

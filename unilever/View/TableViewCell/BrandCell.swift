@@ -9,7 +9,7 @@
 import UIKit
 
 internal protocol BrandSelectDelegate {
-    func brandSelected(_ brand_id: String)
+    func brandSelected(_ brand_id: String, _ brand_name: String)
 }
 
 class BrandCell: UITableViewCell,UICollectionViewDataSource, UICollectionViewDelegate {
@@ -59,7 +59,7 @@ class BrandCell: UITableViewCell,UICollectionViewDataSource, UICollectionViewDel
     }
     
     func loadView(){
-        self.collHeight.constant = (screenSize.width / 3 - 25) * CGFloat(HomeVC.RowCountProduct) + 50
+        self.collHeight.constant = ((screenSize.width / 3 - 25) * (CGFloat(HomeVC.RowCountProduct))) +  ((CGFloat(HomeVC.RowCountProduct) * 20) - 20)
         HomeVC.ProductHeight = Int(self.collHeight.constant)
         collectionCell.reloadData()
     }
@@ -69,7 +69,7 @@ class BrandCell: UITableViewCell,UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate.brandSelected(self.brand.data[indexPath.row].brand_id)
+        self.delegate.brandSelected(self.brand.data[indexPath.row].brand_id,self.brand.data[indexPath.row].brand_name)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

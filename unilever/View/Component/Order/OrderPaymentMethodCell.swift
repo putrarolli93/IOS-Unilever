@@ -16,7 +16,7 @@ class OrderPaymentMethodCell: UITableViewCell,UIPickerViewDelegate,UIPickerViewD
     
     @IBOutlet weak var btnProses: UIButton!
     @IBOutlet weak var inputPaymentInform: UITextField!
-    var title = ["Bayar Ditempat", "Giro", "Bank Transfer", "Kartu Kredit", "Pembayaran Tunai"]
+    var title = ["Bayar Ditempat", "Giro", "Transfer Bank", "Kartu Kredit", "Pembayaran Tunai"]
     let titlePickerView = UIPickerView()
     var delegate: ProsesPaymentDelegate!
     

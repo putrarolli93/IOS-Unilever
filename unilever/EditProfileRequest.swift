@@ -37,15 +37,15 @@ class EditProfileRequest {
                     "outlet_id": "\(UserDefaults.standard.array(forKey: "session")![0])"
                 ],
                 "outlet_info": [
-                    "outlet_contact": "No Contact",
-                    "outlet_address": "Jalan tol",
-                    "outlet_city": "Bekasi",
-                    "outlet_phone": "081219976562",
-                    "outlet_email": "nodeadlock@gmail.com",
+                    "outlet_contact": outlet_contact,
+                    "outlet_address": outlet_address,
+                    "outlet_city": outlet_city,
+                    "outlet_phone": outlet_phone,
+                    "outlet_email": outlet_email,
                     "outlet_photo": "myOutlet.jpg",
-                    "outlet_nik": "989999999",
-                    "outlet_npwp": "123456789",
-                    "outlet_npwp_address": "jalan tol jakarta"
+                    "outlet_nik": outlet_nik,
+                    "outlet_npwp": outlet_npwp,
+                    "outlet_npwp_address": outlet_npwp_address
                 ]
             ]
         ]

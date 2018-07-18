@@ -10,7 +10,7 @@ import UIKit
 import FTIndicator
 import Alamofire
 
-class RegisterVC: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate,RegisterDelegate {
+class RegisterVC: UIViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate,RegisterDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var address: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -37,6 +37,22 @@ class RegisterVC: UIViewController,UINavigationControllerDelegate,UIImagePickerC
         self.setupNavigation()
         imageCircle()
         imagePicker.delegate = self
+        textDelegate()
+    }
+    
+    func textDelegate() {
+        name.delegate = self
+        contact.delegate = self
+        address.delegate = self
+        phone.delegate = self
+        email.delegate = self
+        city.delegate = self
+        username.delegate = self
+        password.delegate = self
+        confirmPassword.delegate = self
+        nik.delegate = self
+        npwp_address.delegate = self
+        npwp.delegate = self
     }
     
     func imageCircle() {
@@ -64,6 +80,11 @@ class RegisterVC: UIViewController,UINavigationControllerDelegate,UIImagePickerC
             FTIndicator.showProgress(withMessage: "Loading")
             _request.req()
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func validasi() -> Bool {
@@ -143,7 +164,6 @@ class RegisterVC: UIViewController,UINavigationControllerDelegate,UIImagePickerC
     }
     
     // MARK: - ImagePicker Delegate
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {

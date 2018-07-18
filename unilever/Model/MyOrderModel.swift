@@ -36,6 +36,7 @@ class MyOrderDataModel:Mappable {
     var order_discount: String = ""
     var order_payment_type: String = ""
     var order_note: String = ""
+    var outlet_term_of_payment: String = ""
     var updated_by: String = ""
     var updated_date: String = ""
     var invoice_id:String = ""
@@ -52,6 +53,7 @@ class MyOrderDataModel:Mappable {
         order_id    <- map["order_id"]
         order_date    <- map["order_date"]
         outlet_id   <- map["outlet_id"]
+        outlet_term_of_payment <- map["outlet_term_of_payment"]
         order_discount    <- map["order_discount"]
         order_payment_type    <- map["order_payment_type"]
         order_note    <- map["order_note"]

@@ -16,6 +16,7 @@ class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegat
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var launcScreen: UIView!
+    @IBOutlet weak var version: UILabel!
     static let screenSize = UIScreen.main.bounds
     
     var _request: LoginRequest = LoginRequest()
@@ -27,8 +28,15 @@ class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegat
         self._check.delegate = self
         username.delegate = self
         password.delegate = self
+        version.text = "V.\(_version())"
         self._check.req()
         LoginVC.getData()
+    }
+    
+    func _version() -> String {
+        let dictionary = Bundle.main.infoDictionary!
+        let version = dictionary["CFBundleShortVersionString"] as! String
+        return "\(version)"
     }
     
     @IBAction func loginAct(_ sender: Any) {
@@ -107,7 +115,7 @@ class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegat
         nc3.tabBarItem = UITabBarItem(title: "Tagihan", image: UIImage(named: "ic_order"),tag: 1)
         
         let vc4 = ProfileVC()
-        vc4.view.backgroundColor = UIColor.blue
+        vc4.view.backgroundColor = UIColor.white
         //        vc4.title = "fourth"
         vc4.navigationItem.titleView = UIImageView(image: UIImage(named: "unilever_brand"))
         vc4.navigationItem.rightBarButtonItem = rightBarButton

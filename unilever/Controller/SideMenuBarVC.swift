@@ -21,18 +21,13 @@ class SideMenuBarVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
 
-        myTableView = UITableView(frame: CGRect(x: 0, y: -barHeight, width: displayWidth, height: displayHeight + barHeight))
+        myTableView = UITableView(frame: CGRect(x: 0, y: -20, width: displayWidth, height: displayHeight + barHeight))
         //myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.register(UINib(nibName: "HeaderCell", bundle: nil), forCellReuseIdentifier: "header")
         myTableView.register(UINib(nibName: "MenuListCell", bundle: nil), forCellReuseIdentifier: "menuList")
         self.view.addSubview(myTableView)
-
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
 
     }
     
@@ -76,6 +71,15 @@ class SideMenuBarVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

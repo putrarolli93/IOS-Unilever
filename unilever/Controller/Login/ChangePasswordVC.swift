@@ -9,7 +9,7 @@
 import UIKit
 import FTIndicator
 
-class ChangePasswordVC: UIViewController,ChangePasswordDelegate {
+class ChangePasswordVC: UIViewController,ChangePasswordDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var new_password: UITextField!
@@ -23,6 +23,15 @@ class ChangePasswordVC: UIViewController,ChangePasswordDelegate {
         password.isSecureTextEntry = true
         new_password.isSecureTextEntry = true
         confirm_password.isSecureTextEntry = true
+        
+        password.delegate = self
+        new_password.delegate = self
+        confirm_password.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func savePassword(_ sender: Any) {

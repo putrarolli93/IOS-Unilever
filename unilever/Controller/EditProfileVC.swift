@@ -9,7 +9,7 @@
 import UIKit
 import FTIndicator
 
-class EditProfileVC: UIViewController,EditProfileDelegate {
+class EditProfileVC: UIViewController,EditProfileDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var address: UITextView!
     @IBOutlet weak var contact: UITextField!
@@ -26,6 +26,7 @@ class EditProfileVC: UIViewController,EditProfileDelegate {
         super.viewDidLoad()
         setupNavigation()
         setupView()
+        addDoneButtonOnKeyboard()
     }
     
     func setupView() {
@@ -36,6 +37,43 @@ class EditProfileVC: UIViewController,EditProfileDelegate {
         npwp.text = profileModel.data.outlet_npwp
         npwp_address.text = profileModel.data.outlet_npwp_address
         nik.text = profileModel.data.outlet_nik
+    }
+    
+    func addDoneButtonOnKeyboard()
+    {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0,y: 0,width: 320,height: 50))
+        doneToolbar.barStyle = UIBarStyle.default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(EditProfileVC.doneButtonAction))
+        
+        let items = NSMutableArray()
+        items.add(flexSpace)
+        items.add(done)
+        
+        doneToolbar.items = items as? [UIBarButtonItem]
+        doneToolbar.sizeToFit()
+        
+        self.address.inputAccessoryView = doneToolbar
+        self.contact.inputAccessoryView = doneToolbar
+        self.city.inputAccessoryView = doneToolbar
+        self.phone.inputAccessoryView = doneToolbar
+        self.npwp.inputAccessoryView = doneToolbar
+        self.npwp_address.inputAccessoryView = doneToolbar
+        self.nik.inputAccessoryView = doneToolbar
+        
+    }
+    
+    func doneButtonAction()
+    {
+        self.address.resignFirstResponder()
+        self.contact.resignFirstResponder()
+        self.city.resignFirstResponder()
+        self.phone.resignFirstResponder()
+        self.npwp.resignFirstResponder()
+        self.npwp_address.resignFirstResponder()
+        self.nik.resignFirstResponder()
+
     }
     
     func popViewController() {
