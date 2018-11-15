@@ -31,7 +31,7 @@ class ForgotPasswordRequest {
             ]
         ]
         
-        Alamofire.request("http://202.154.3.188/commerce/unilever-middleware/core-services/Authenticate/forget_account", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request("\(BaseUrl.baseUrl)commerce/unilever-middleware/core-services/Authenticate/forget_account", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 let result = response.result.value
                 if let responses = Mapper<ForgotPasswordModel>().map(JSONObject: result as AnyObject) {

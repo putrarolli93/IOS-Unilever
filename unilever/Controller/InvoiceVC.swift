@@ -25,7 +25,7 @@ class InvoiceVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Inv
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.register(UINib(nibName: "InvoiceCell", bundle: nil), forCellReuseIdentifier: "InvoiceCell")
-//        myTableView.separatorStyle = .none
+        myTableView.separatorStyle = .none
         self.view.addSubview(myTableView)
     }
     
@@ -39,6 +39,12 @@ class InvoiceVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Inv
         label.textAlignment = .center
         label.text = "\(LoginVC.product_count)"
         navigationController?.navigationBar.addSubview(label)
+        
+        label2.textColor = UIColor.red
+        label2.textAlignment = .center
+        label2.text = "0"
+        navigationController?.navigationBar.addSubview(label2)
+        
         addNotifIcon()
     }
     
@@ -121,9 +127,5 @@ extension InvoiceVC {
     func setupNavigation() {
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "cart"), style: .plain, target: self, action: #selector(searchIconTapped))
         navigationItem.rightBarButtonItem = rightBarButton
-//        navigationController?.defaultStyle()
-//        title = "Invoice"
-//        let leftBarButton = UIBarButtonItem(image: UIImage(named: "ic_backBtn"), style: .plain, target: self, action: #selector(popViewController))
-//        navigationItem.leftBarButtonItem = leftBarButton
     }
 }

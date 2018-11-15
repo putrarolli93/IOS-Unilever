@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InvoiceDetailVC" customModule="unilever" customModuleProvider="target">
             <connections>
                 <outlet property="batas_tagihan" destination="bsq-Ia-9dh" id="sDA-J4-cYs"/>
+                <outlet property="btn_bayar" destination="V8e-aC-Ggl" id="PIf-rE-W0L"/>
                 <outlet property="diskon" destination="nMf-Rt-hVQ" id="UJX-8V-xmX"/>
                 <outlet property="invoice_id" destination="hT3-MZ-W8R" id="0F1-i1-BYC"/>
                 <outlet property="keterangan" destination="krb-GJ-Aq2" id="n3K-K1-36A"/>

@@ -23,7 +23,7 @@ class OrderDetailRequest {
     var delegate: OrderDetailDelegate!
     
     func req(_ id: String) {
-        Alamofire.request("http://202.154.3.188/commerce/unilever-middleware/core-services/Order/detail/orderId/\(id)").responseJSON { response in
+        Alamofire.request("\(BaseUrl.baseUrl)commerce/unilever-middleware/core-services/Order/detail/orderId/\(id)").responseJSON { response in
             let result = response.result.value
             if let responses = Mapper<OrderDetailModel>().map(JSONObject: result as AnyObject) {
                 DispatchQueue.main.async {

@@ -33,7 +33,7 @@ class GetProfileRequest {
             ]
         ]
         
-        Alamofire.request("http://202.154.3.188/commerce/unilever-middleware/core-services/Profile/get_profile", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request("\(BaseUrl.baseUrl)commerce/unilever-middleware/core-services/Profile/get_profile", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 let result = response.result.value
                 if let responses = Mapper<GetProfileModel>().map(JSONObject: result as AnyObject) {

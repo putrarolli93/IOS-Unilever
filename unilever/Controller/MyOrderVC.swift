@@ -10,16 +10,6 @@ import UIKit
 
 class MyOrderVC: UIViewController,UITableViewDelegate, UITableViewDataSource,MyOrderDelegate {
     
-    func MyOrderRequestSuccess(data: MyOrderModel) {
-        self.myorder = data
-        myTableView.reloadData()
-    }
-    
-    func MyOrderRequestError(data: String) {
-        
-    }
-    
-    
     let label = UILabel(frame: CGRect(x: LoginVC.screenSize.width - 25, y: 0, width: 20, height: 20))
     private var myTableView: UITableView!
     var bounds = UIScreen.main.bounds
@@ -30,18 +20,19 @@ class MyOrderVC: UIViewController,UITableViewDelegate, UITableViewDataSource,MyO
     override func viewDidLoad() {
         super.viewDidLoad()
 //        setupNavigation()
-        _request.delegate = self
-        _request.req()
+
         myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height))
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.register(UINib(nibName: "MyOrderCell", bundle: nil), forCellReuseIdentifier: "myordercell")
-        //        myTableView.separatorStyle = .none
+        myTableView.separatorStyle = .none
         self.view.addSubview(myTableView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        _request.delegate = self
+        _request.req()
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "cart"), style: .plain, target: self, action: #selector(searchIconTapped))
         navigationItem.rightBarButtonItem = rightBarButton
         
@@ -49,6 +40,12 @@ class MyOrderVC: UIViewController,UITableViewDelegate, UITableViewDataSource,MyO
         label.textAlignment = .center
         label.text = "\(LoginVC.product_count)"
         navigationController?.navigationBar.addSubview(label)
+        
+        label2.textColor = UIColor.red
+        label2.textAlignment = .center
+        label2.text = "0"
+        navigationController?.navigationBar.addSubview(label2)
+        
         addNotifIcon()
     }
     
@@ -125,6 +122,17 @@ class MyOrderVC: UIViewController,UITableViewDelegate, UITableViewDataSource,MyO
         dismiss(animated: true, completion: {
         })
     }
+    
+    //MARK: MYORDER REQUEST DELEGATE
+    func MyOrderRequestSuccess(data: MyOrderModel) {
+        self.myorder = data
+        myTableView.reloadData()
+    }
+    
+    func MyOrderRequestError(data: String) {
+        
+    }
+    
 
 }
 

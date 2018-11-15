@@ -42,7 +42,7 @@ class BrandCell: UITableViewCell,UICollectionViewDataSource, UICollectionViewDel
         layout.minimumLineSpacing = 10.0
         layout.minimumInteritemSpacing = 0.0
         //        layout.sectionInset = UIEdgeInsets(top: 0 , left: 10, bottom: 0, right: 10)
-        layout.itemSize = CGSize(width: screenWidth / 3 - 20, height: screenWidth / 3 - 25)
+        layout.itemSize = CGSize(width: screenWidth / 2 - 20, height: screenWidth / 2 - 25)
         //        collectionCell = UICollectionView(frame: self.bounds, collectionViewLayout: layout)
         collectionCell.delegate = self
         collectionCell.dataSource = self
@@ -59,7 +59,7 @@ class BrandCell: UITableViewCell,UICollectionViewDataSource, UICollectionViewDel
     }
     
     func loadView(){
-        self.collHeight.constant = ((screenSize.width / 3 - 25) * (CGFloat(HomeVC.RowCountProduct))) +  ((CGFloat(HomeVC.RowCountProduct) * 20) - 20)
+        self.collHeight.constant = ((screenSize.width / 2 - 25) * (CGFloat(HomeVC.RowCountProduct))) +  ((CGFloat(HomeVC.RowCountProduct) * 20) - 20)
         HomeVC.ProductHeight = Int(self.collHeight.constant)
         collectionCell.reloadData()
     }

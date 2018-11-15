@@ -58,7 +58,7 @@ class RegisterRequest {
             ]
         ]
         
-        Alamofire.request("http://202.154.3.188/commerce/unilever-middleware/core-services/authenticate/register", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request("\(BaseUrl.baseUrl)commerce/unilever-middleware/core-services/authenticate/register", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 let result = response.result.value
                 if let responses = Mapper<RegisterModel>().map(JSONObject: result as AnyObject) {

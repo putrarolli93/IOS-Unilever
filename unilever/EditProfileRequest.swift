@@ -12,7 +12,7 @@ import AlamofireObjectMapper
 import ObjectMapper
 
 internal protocol EditProfileDelegate {
-    func editProfileSuccess(data: PurchaseModel)
+    func editProfileSuccess(data: EditProfileModel)
     func editProfileError(data: String)
 }
 
@@ -50,10 +50,10 @@ class EditProfileRequest {
             ]
         ]
         
-        Alamofire.request("http://202.154.3.188/commerce/unilever-middleware/core-services/Profile/update_profile", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request("\(BaseUrl.baseUrl)commerce/unilever-middleware/core-services/Profile/update_profile", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 let result = response.result.value
-                if let responses = Mapper<PurchaseModel>().map(JSONObject: result as AnyObject) {
+                if let responses = Mapper<EditProfileModel>().map(JSONObject: result as AnyObject) {
                     self.delegate.editProfileSuccess(data: responses)
                 }else{
                     self.delegate.editProfileError(data: "error")

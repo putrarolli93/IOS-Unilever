@@ -184,7 +184,7 @@ class RegisterVC: UIViewController,UINavigationControllerDelegate,UIImagePickerC
             multipartFormData.append(imageData, withName: "profile_photo", fileName: "sample.jpg", mimeType: "image/jpeg")
             multipartFormData.append(titleToSend.data(using: .utf8)!, withName: "outlet_id")},
                          usingThreshold:UInt64.init(),
-                         to: "http://202.154.3.188/commerce/unilever-middleware/core-services/Profile/photo_upload",
+                         to: "\(BaseUrl.baseUrl)commerce/unilever-middleware/core-services/Profile/photo_upload",
                          method:.post,
                          headers:headers,
                          encodingCompletion: { encodingResult in

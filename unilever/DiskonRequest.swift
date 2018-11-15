@@ -22,7 +22,7 @@ class DiskonRequest {
     var delegate: DiskonDelegate!
     
     func req() {
-        Alamofire.request("http://202.154.3.188/commerce/unilever-middleware/core-services/Order/discount_check/orderSubTotal/\(total)").responseJSON { response in
+        Alamofire.request("\(BaseUrl.baseUrl)commerce/unilever-middleware/core-services/Order/discount_check/orderSubTotal/\(total)").responseJSON { response in
             let result = response.result.value
             if let responses = Mapper<DiskonModel>().map(JSONObject: result as AnyObject) {
                 DispatchQueue.main.async {

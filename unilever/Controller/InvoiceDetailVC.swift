@@ -12,6 +12,7 @@ import FTIndicator
 
 class InvoiceDetailVC: UIViewController,InvoiceDetailDelegate,DiskonDelegate {
 
+    @IBOutlet weak var btn_bayar: UIButton!
     @IBOutlet weak var keterangan: UILabel!
     @IBOutlet weak var pembayaran_type: UILabel!
     @IBOutlet weak var total_pembayaran: UILabel!
@@ -64,6 +65,11 @@ class InvoiceDetailVC: UIViewController,InvoiceDetailDelegate,DiskonDelegate {
 //        self.total_pembayaran.text = "RP. \(Int(total).formatnumber())"
         self.pembayaran_type.text = data.data[0].order_payment_type
         self.keterangan.text = data.data[0].order_note
+        
+        if status.text! == "Paid" {
+            btn_bayar.isHidden = true
+        }
+        
     }
     
     func InvoiceDetailRequestError(data: String) {
@@ -94,7 +100,7 @@ class InvoiceDetailVC: UIViewController,InvoiceDetailDelegate,DiskonDelegate {
 
     
     @IBAction func bayarDidClick(_ sender: Any) {
-        if pembayaran_type.text == "Transfer Bank" || pembayaran_type.text == "Kartu Kredit" {
+        if pembayaran_type.text == "Transfer Bank" || pembayaran_type.text == "Kartu Kredit" || pembayaran_type.text == "Bank Transfer" {
             let regis = OrderWebviewVC()
             regis.pickerPayment = self.data.data[0].order_payment_type
             regis.total = Double(self.total)

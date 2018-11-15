@@ -23,7 +23,7 @@ class ProductDetailRequest {
     static var product_detail: String = ""
     
     func req(_ product_detail_string: String) {
-        Alamofire.request("http://202.154.3.188/commerce/unilever-middleware/core-services/product/inquiry/productId/\(ProductDetailRequest.product_detail)").responseJSON { response in
+        Alamofire.request("\(BaseUrl.baseUrl)commerce/unilever-middleware/core-services/product/inquiry/productId/\(ProductDetailRequest.product_detail)").responseJSON { response in
             let result = response.result.value
             if let responses = Mapper<ProductDetailModel>().map(JSONObject: result as AnyObject) {
                 DispatchQueue.main.async {

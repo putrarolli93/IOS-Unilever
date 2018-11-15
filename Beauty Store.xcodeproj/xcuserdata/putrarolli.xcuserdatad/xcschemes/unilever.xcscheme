@@ -17,7 +17,7 @@
                BlueprintIdentifier = "2A58CD3A209C12230047B5FE"
                BuildableName = "unilever.app"
                BlueprintName = "unilever"
-               ReferencedContainer = "container:unilever.xcodeproj">
+               ReferencedContainer = "container:Beauty Store.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,7 +36,7 @@
             BlueprintIdentifier = "2A58CD3A209C12230047B5FE"
             BuildableName = "unilever.app"
             BlueprintName = "unilever"
-            ReferencedContainer = "container:unilever.xcodeproj">
+            ReferencedContainer = "container:Beauty Store.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -60,7 +60,7 @@
             BlueprintIdentifier = "2A58CD3A209C12230047B5FE"
             BuildableName = "unilever.app"
             BlueprintName = "unilever"
-            ReferencedContainer = "container:unilever.xcodeproj">
+            ReferencedContainer = "container:Beauty Store.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -79,7 +79,7 @@
             BlueprintIdentifier = "2A58CD3A209C12230047B5FE"
             BuildableName = "unilever.app"
             BlueprintName = "unilever"
-            ReferencedContainer = "container:unilever.xcodeproj">
+            ReferencedContainer = "container:Beauty Store.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

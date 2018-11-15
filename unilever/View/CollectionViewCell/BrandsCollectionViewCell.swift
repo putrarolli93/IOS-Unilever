@@ -21,7 +21,7 @@ class BrandsCollectionViewCell: UICollectionViewCell {
     
     func loadView(_ index: Int){
 //        brand_image.image = UIImage(named: "\(product.data[index].product_photo_link)")
-        let string_image = "http://202.154.3.188/commerce/production/uploads/\(brand.data[index].brand_image)"
+        let string_image = "\(BaseUrl.baseUrl)commerce/production/uploads/\(brand.data[index].brand_image)"
         let updatedUrl = string_image.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         brand_image.sd_setImage(with: URL(string: updatedUrl!), placeholderImage: UIImage(named: "placeholder.png"))
     }

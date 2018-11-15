@@ -11,7 +11,11 @@ import SideMenuController
 import FTIndicator
 import CoreData
 
-class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegate {
+internal protocol GetProfileAfterLoginDelegate {
+    func getProfileAfterLogin(_ data: String)
+}
+
+class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegate,GetProfileDelegate,SideMenuControllerDelegate {
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -20,15 +24,20 @@ class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegat
     static let screenSize = UIScreen.main.bounds
     
     var _request: LoginRequest = LoginRequest()
+    var _request_profile: GetProfileRequest = GetProfileRequest()
     var _check: CheckLogin = CheckLogin()
     static var product_count: Int = 0
-
+    var login_model: LoginModel!
+    var delegate: GetProfileAfterLoginDelegate!
+    var isFromLogin: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self._check.delegate = self
         username.delegate = self
         password.delegate = self
         version.text = "V.\(_version())"
+        _request_profile.delegate = self
         self._check.req()
         LoginVC.getData()
     }
@@ -72,13 +81,13 @@ class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegat
     
     func showHome() {
         let sideMenuViewController = SideMenuController()
-        
+        sideMenuViewController.delegate = self
         // create the view controllers for center containment
         let vc1 = HomeVC()
         vc1.view.backgroundColor = UIColor.white
         //        vc1.title = "first"
         //        navigationItem.titleView = UIImageView(image: UIImage(named: "logo"))
-        vc1.navigationItem.titleView = UIImageView(image: UIImage(named: "unilever_brand"))
+        vc1.navigationItem.titleView = UIImageView(image: UIImage(named: "logo_500x500"))
         
         //------------------
 //        let label = UILabel(frame: CGRect(x: LoginVC.screenSize.width - 25, y: 0, width: 20, height: 20))
@@ -100,7 +109,7 @@ class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegat
         
         let vc2 = MyOrderVC()
         vc2.view.backgroundColor = UIColor.white
-        vc2.navigationItem.titleView = UIImageView(image: UIImage(named: "unilever_brand"))
+        vc2.navigationItem.titleView = UIImageView(image: UIImage(named: "logo_500x500"))
         vc2.navigationItem.rightBarButtonItem = rightBarButton
         //        vc2.title = "second"
         let nc2 = UINavigationController(rootViewController: vc2)
@@ -109,7 +118,7 @@ class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegat
         let vc3 = InvoiceVC()
         vc3.view.backgroundColor = UIColor.white
         //        vc3.title = "third"
-        vc3.navigationItem.titleView = UIImageView(image: UIImage(named: "unilever_brand"))
+        vc3.navigationItem.titleView = UIImageView(image: UIImage(named: "logo_500x500"))
         vc3.navigationItem.rightBarButtonItem = rightBarButton
         let nc3 = UINavigationController(rootViewController: vc3)
         nc3.tabBarItem = UITabBarItem(title: "Tagihan", image: UIImage(named: "ic_order"),tag: 1)
@@ -117,7 +126,7 @@ class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegat
         let vc4 = ProfileVC()
         vc4.view.backgroundColor = UIColor.white
         //        vc4.title = "fourth"
-        vc4.navigationItem.titleView = UIImageView(image: UIImage(named: "unilever_brand"))
+        vc4.navigationItem.titleView = UIImageView(image: UIImage(named: "logo_500x500"))
         vc4.navigationItem.rightBarButtonItem = rightBarButton
         let nc4 = UINavigationController(rootViewController: vc4)
         nc4.tabBarItem = UITabBarItem(title: "Profil", image: UIImage(named: "ic_profile_new"),tag: 1)
@@ -142,9 +151,12 @@ class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegat
     //MARK: LoginDelegate
     func loginSuccess(data: LoginModel) {
         print(data)
+        self.login_model = data
         if data.response_code == "00" {
             UserDefaults.standard.set(["\(data.data.outlet_id)","\(data.data.outlet_name)","\(data.data.username)"], forKey: "session")
-            self.showHome()
+            _request_profile.username = data.data.username
+            _request_profile.outlet_id = data.data.outlet_id
+            _request_profile.req()
         }else{
             let alert = UIAlertController(title: "Alert", message: "Username or Password incorrect", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
@@ -154,12 +166,15 @@ class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegat
     }
     
     func loginError(data: String) {
-       
+     
     }
     
     //MARK: CheckLogin
     func isLogin(data: String) {
-        self.showHome()
+        isFromLogin = false
+        _request_profile.username = "\(UserDefaults.standard.array(forKey: "session")![2])"
+        _request_profile.outlet_id = "\(UserDefaults.standard.array(forKey: "session")![0])"
+        _request_profile.req()
     }
     
     func isNotlogin(data: String) {
@@ -186,6 +201,32 @@ class LoginVC: UIViewController,LoginDelegate,IsLoginDelegate,UITextFieldDelegat
         } catch {
             print("Failed")
         }
+    }
+    
+    //MARK: GET PROFILE
+    func getProfileSuccess(data: GetProfileModel) {
+        var image: String = ""
+        if isFromLogin {
+            image = "\(BaseUrl.baseUrl)commerce/unilever-middleware/uploads/\(login_model.data.outlet_id)/\(data.data.outlet_photo)"
+        }else{
+            image = "\(BaseUrl.baseUrl)commerce/unilever-middleware/uploads/\(UserDefaults.standard.array(forKey: "session")![0])/\(data.data.outlet_photo)"
+        }
+        ProfileVC.image_photo = image
+        UserDefaults.standard.set("\(image)", forKey: "image")
+      showHome()
+    }
+    
+    func getProfileError(data: String) {
+        showHome()
+    }
+    
+    //MARK: SIDEMENU
+    func sideMenuControllerDidHide(_ sideMenuController: SideMenuController) {
+        
+    }
+    
+    func sideMenuControllerDidReveal(_ sideMenuController: SideMenuController) {
+        
     }
     
 }

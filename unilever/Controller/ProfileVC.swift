@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire
+import AlamofireObjectMapper
+import ObjectMapper
 import FTIndicator
 
 class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,ProfileChangeImageDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,GetProfileDelegate,profileEditBtnDelegate {
@@ -15,20 +17,19 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
     private var myTableView: UITableView!
     var bounds = UIScreen.main.bounds
     let label = UILabel(frame: CGRect(x: LoginVC.screenSize.width - 25, y: 0, width: 20, height: 20))
+    let label2 = UILabel(frame: CGRect(x: LoginVC.screenSize.width - 85, y: 0, width: 20, height: 20))
     let imagePicker = UIImagePickerController()
     var imageData: UIImage? = nil
     var _request: GetProfileRequest = GetProfileRequest()
     var getImage: Bool = false
     var profile: GetProfileModel!
     static var image_photo: String = ""
+    var image: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        _request.delegate = self
-        _request.username = "\(UserDefaults.standard.array(forKey: "session")![2])"
-        _request.outlet_id = "\(UserDefaults.standard.array(forKey: "session")![0])"
-        _request.req()
+
         myTableView = UITableView(frame: CGRect(x: 0, y: 20, width: bounds.size.width, height: bounds.size.height - 20))
         myTableView.delegate = self
         myTableView.dataSource = self
@@ -43,12 +44,22 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        _request.delegate = self
+        _request.username = "\(UserDefaults.standard.array(forKey: "session")![2])"
+        _request.outlet_id = "\(UserDefaults.standard.array(forKey: "session")![0])"
+        _request.req()
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "cart"), style: .plain, target: self, action: #selector(searchIconTapped))
         navigationItem.rightBarButtonItem = rightBarButton
         label.textColor = UIColor.red
         label.textAlignment = .center
         label.text = "\(LoginVC.product_count)"
         navigationController?.navigationBar.addSubview(label)
+        
+        label2.textColor = UIColor.red
+        label2.textAlignment = .center
+        label2.text = "0"
+        navigationController?.navigationBar.addSubview(label2)
+        
         addNotifIcon()
     }
     
@@ -97,6 +108,7 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
             }else if indexPath.row == 1 {
                 let prefs = UserDefaults.standard
                 prefs.removeObject(forKey:"session")
+                prefs.removeObject(forKey:"image")
                 self.present(LoginVC(), animated: true, completion: nil)
             }
         }
@@ -109,9 +121,7 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
             cell.selectionStyle = UITableViewCellSelectionStyle.none
             cell.profile_username.text = "\(UserDefaults.standard.array(forKey: "session")![1])"
             if self.profile != nil && self.profile.data.outlet_photo != "" {
-                let image = "http://202.154.3.188/commerce/unilever-middleware/uploads/\(UserDefaults.standard.array(forKey: "session")![0])/\(self.profile.data.outlet_photo)"
-                ProfileVC.image_photo = image
-                cell.profile_image.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: "placeholder.png"))
+                cell.profile_image.sd_setImage(with: URL(string: ProfileVC.image_photo), placeholderImage: UIImage(named: "placeholder.png"))
             }
             cell.delegate = self
             if getImage {
@@ -183,7 +193,7 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
             cell.info_value.text = profile.data.outlet_city
             
         }else if data == 4 && profile.data.outlet_contact != "" {
-            cell.info_value.text = profile.data.outlet_contact
+            cell.info_value.text = profile.data.outlet_phone
             
         }else if data == 5 && profile.data.outlet_email != "" {
             cell.info_value.text = profile.data.outlet_email
@@ -239,17 +249,25 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
                 multipartFormData.append(imageData, withName: "profile_photo", fileName: "sample.jpg", mimeType: "image/jpeg")
                 multipartFormData.append(titleToSend.data(using: .utf8)!, withName: "outlet_id")},
                              usingThreshold:UInt64.init(),
-                             to: "http://202.154.3.188/commerce/unilever-middleware/core-services/Profile/photo_upload",
+                             to: "\(BaseUrl.baseUrl)commerce/unilever-middleware/core-services/Profile/photo_upload",
                              method:.post,
                              headers:headers,
                              encodingCompletion: { encodingResult in
                                 switch encodingResult {
                                 case .success(let upload, _, _):
                                     upload.responseJSON { response in
-                                        debugPrint(response)
-                                        FTIndicator.dismissProgress()
-                                        self.getImage = true
-                                        self.loadData()
+                                        let result = response.result.value
+                                        if let responses = Mapper<ImageUploadModel>().map(JSONObject: result as AnyObject) {
+                                            FTIndicator.dismissProgress()
+                                            self.getImage = true
+                                            //save image session
+                                            self.image = "\(BaseUrl.baseUrl)commerce/unilever-middleware/uploads/\(UserDefaults.standard.array(forKey: "session")![0])/\(responses.outlet_photo)"
+                                            ProfileVC.image_photo = self.image
+                                            UserDefaults.standard.set("\(self.image)", forKey: "image")
+                                            
+                                            self.loadData()
+                                            self.dismiss(animated: true, completion: nil)
+                                        }
                                     }
                                 case .failure(let encodingError):
                                     print(encodingError)
@@ -257,7 +275,6 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
                                 }
             })
         }
-        dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -293,7 +310,9 @@ class ProfileVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Pro
     func loadData(){
         myTableView.reloadData()
         myTableView.sizeToFit()
+      
     }
+    
     
 }
 

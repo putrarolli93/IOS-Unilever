@@ -12,7 +12,8 @@ class OrderTotalCell: UITableViewCell {
 
     @IBOutlet weak var total_price_1: UILabel!
     @IBOutlet weak var price_total: UILabel!
-    @IBOutlet weak var total_price_2: UILabel!
+    @IBOutlet weak var diskon: UILabel!
+    @IBOutlet weak var diskon_lbl: UILabel!
     @IBOutlet weak var price_ppn: UILabel!
     @IBOutlet weak var total_price_3: UILabel!
     override func awakeFromNib() {

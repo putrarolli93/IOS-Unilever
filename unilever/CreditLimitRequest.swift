@@ -23,7 +23,7 @@ class CreditLimitRequest {
     var delegate: CreditLimitDelegate!
     
     func req() {
-        Alamofire.request("http://202.154.3.188/commerce/unilever-middleware/core-services/Order/credit_limit_check/outletId/\(UserDefaults.standard.array(forKey: "session")![0])").responseJSON { response in
+        Alamofire.request("\(BaseUrl.baseUrl)commerce/unilever-middleware/core-services/Order/credit_limit_check/outletId/\(UserDefaults.standard.array(forKey: "session")![0])").responseJSON { response in
             let result = response.result.value
             if let responses = Mapper<CreditLimitModel>().map(JSONObject: result as AnyObject) {
                 DispatchQueue.main.async {

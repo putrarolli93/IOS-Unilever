@@ -33,7 +33,7 @@ class BannerRequest {
             ]
         ]
         
-        Alamofire.request("http://202.154.3.188/commerce/unilever-middleware/core-services/Promo/promo_banner1", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request("\(BaseUrl.baseUrl)commerce/unilever-middleware/core-services/Promo/promo_banner1", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 let result = response.result.value
                 if let responses = Mapper<BannerModel>().map(JSONObject: result as AnyObject) {

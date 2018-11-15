@@ -22,8 +22,8 @@ class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Produc
 
     func ProductBrandRequestSuccess(data: [ProductModelBrand]?, brand: ProductBrandModel?) {
         self.brand = brand
-        let row = (brand?.data.count)! / 3
-        let rowProduct = (brand?.data.count)! % 3
+        let row = (brand?.data.count)! / 2
+        let rowProduct = (brand?.data.count)! % 2
         if rowProduct != 0 {
             HomeVC.RowCountProduct = row + 1
         }else{
@@ -66,10 +66,10 @@ class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Produc
     let label = UILabel(frame: CGRect(x: LoginVC.screenSize.width - 25, y: 0, width: 20, height: 20))
     let label2 = UILabel(frame: CGRect(x: LoginVC.screenSize.width - 85, y: 0, width: 20, height: 20))
     var bounds = UIScreen.main.bounds
+    static var HOME_FIRST_CALL_SIDEMENU: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "cart"), style: .plain, target: self, action: #selector(searchIconTapped))
         navigationItem.rightBarButtonItem = rightBarButton
         _request.delegate = self
@@ -114,6 +114,11 @@ class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource,Produc
         label.textAlignment = .center
         label.text = "\(LoginVC.product_count)"
         navigationController?.navigationBar.addSubview(label)
+        
+        label2.textColor = UIColor.red
+        label2.textAlignment = .center
+        label2.text = "0"
+        navigationController?.navigationBar.addSubview(label2)
         
         addNotifIcon()
     }

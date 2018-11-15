@@ -15,18 +15,14 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var product_image: UIImageView!
     @IBOutlet weak var product_title: UILabel!
     @IBOutlet weak var product_price: UILabel!
+    @IBOutlet weak var product_price_before_diskon: UILabel!
     @IBOutlet weak var btn_buy: UIView!
     @IBOutlet weak var btn_buy_text: UILabel!
     
 //    var index: Int = 0
     var isRemove: Bool = true
     var data: ProductModel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
+
     func loadView(_ index: Int,_ data: ProductModel,_ data_filter: [ProductModelArray]!) {
         self.data = data
         if data_filter[index].product_stock == "Unavailable" {
@@ -44,6 +40,16 @@ class ProductCollectionViewCell: UICollectionViewCell {
         product_image.sd_setImage(with: URL(string: updatedUrl!), placeholderImage: UIImage(named: "placeholder.png"))
         product_title.text = data_filter[index].product_name
         product_price.text = "Rp. \(String(describing: formattedNumber!))"
+        
+        if data_filter[index].product_pricelist != data_filter[index].selling_price {
+            let formattedNumber2 = formater.string(from: Int(data_filter[index].product_pricelist)! as NSNumber)
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Rp. \(String(describing: formattedNumber2!))")
+            attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+            product_price_before_diskon.attributedText = attributeString
+        }else if data_filter[index].product_pricelist == data_filter[index].selling_price {
+            product_price_before_diskon.isHidden = true
+        }
+       
     }
 
 //    @IBAction func addToCart(_ sender: Any) {

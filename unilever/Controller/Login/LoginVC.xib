@@ -183,17 +183,17 @@
                         <constraint firstItem="UrF-d8-4eT" firstAttribute="top" secondItem="7tp-HI-5yf" secondAttribute="bottom" id="yTb-Fm-pMP"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unilever" translatesAutoresizingMaskIntoConstraints="NO" id="7IV-wv-hHx">
-                    <rect key="frame" x="52" y="20" width="119" height="128"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_b_500x500" translatesAutoresizingMaskIntoConstraints="NO" id="7IV-wv-hHx">
+                    <rect key="frame" x="20" y="20" width="150" height="150"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="128" id="gGt-x7-PWB"/>
-                        <constraint firstAttribute="width" constant="119" id="m4g-5p-9Gn"/>
+                        <constraint firstAttribute="height" constant="150" id="gGt-x7-PWB"/>
+                        <constraint firstAttribute="width" constant="150" id="m4g-5p-9Gn"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNo-M6-FYs">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unilever" translatesAutoresizingMaskIntoConstraints="NO" id="lvM-gs-4g9">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_500x500" translatesAutoresizingMaskIntoConstraints="NO" id="lvM-gs-4g9">
                             <rect key="frame" x="87" y="233.5" width="200" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="200" id="TiE-j9-6Yc"/>
@@ -216,7 +216,7 @@
                 <constraint firstItem="Rtj-Jb-sjJ" firstAttribute="top" secondItem="itM-Be-aMq" secondAttribute="top" id="Ect-IV-ElP"/>
                 <constraint firstItem="Rlc-nJ-eoN" firstAttribute="top" secondItem="ZS1-Uv-ZSy" secondAttribute="bottom" constant="16" id="K1E-Cb-jRG"/>
                 <constraint firstItem="Rtj-Jb-sjJ" firstAttribute="bottom" secondItem="itM-Be-aMq" secondAttribute="bottom" id="LaN-yI-tgb"/>
-                <constraint firstItem="7IV-wv-hHx" firstAttribute="leading" secondItem="itM-Be-aMq" secondAttribute="leading" constant="52" id="Nft-Cc-Jcd"/>
+                <constraint firstItem="7IV-wv-hHx" firstAttribute="leading" secondItem="itM-Be-aMq" secondAttribute="leading" constant="20" id="Nft-Cc-Jcd"/>
                 <constraint firstItem="leT-Oj-VYb" firstAttribute="leading" secondItem="itM-Be-aMq" secondAttribute="leading" id="XV5-I4-dqv"/>
                 <constraint firstItem="ZS1-Uv-ZSy" firstAttribute="centerX" secondItem="Rtj-Jb-sjJ" secondAttribute="centerX" id="YdH-w6-PLb"/>
                 <constraint firstItem="sNo-M6-FYs" firstAttribute="leading" secondItem="LPp-iH-dAM" secondAttribute="leading" id="af5-7k-9Lu"/>
@@ -239,7 +239,8 @@
         </view>
     </objects>
     <resources>
-        <image name="Unilever" width="291" height="322"/>
         <image name="login_bg" width="1200" height="778"/>
+        <image name="logo_500x500" width="500" height="500"/>
+        <image name="logo_b_500x500" width="500" height="500"/>
     </resources>
 </document>

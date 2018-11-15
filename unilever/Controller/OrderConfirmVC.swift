@@ -8,8 +8,11 @@
 
 import UIKit
 import CoreData
+import FTIndicator
 
-class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource,ProsesPaymentDelegate,InputInformTextDelegate,ContinueOrderDelegate {
+class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource,ProsesPaymentDelegate,InputInformTextDelegate,ContinueOrderDelegate,DiskonDelegate {
+    
+    @IBOutlet weak var btn_proses: UIButton!
     
     func OrderSuccess(data: PurchaseModel) {
         let regis = OrderReportFinishVC()
@@ -26,7 +29,8 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     
     var pickerView = UIPickerView()
-    var pickOption = ["one", "two", "three", "seven", "fifteen"]
+    var payment_option = ["Bayar ditempat", "Giro", "Transfer Bank", "Kartu Kredit", "Pembayaran Tunai"]
+    var payment_option_img = ["delivery-truck-with-circular-clock", "icon_giro", "bank-building", "credit-cards", "hand"]
     private var myTableView: UITableView!
     var bounds = UIScreen.main.bounds
     var data_count: Int = 0
@@ -36,8 +40,11 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
 //    var _request: OrderDetailRequest = OrderDetailRequest()
     var _request: ContinueOrderRequest = ContinueOrderRequest()
     var order_detail: OrderDetailModel!
+    var diskon: DiskonModel!
     var textInform: String = ""
     var pickerPayment: String = ""
+    var index_payment_selec: Int? = nil
+    var _request_diskon: DiskonRequest = DiskonRequest()
     
     
     override func viewDidLoad() {
@@ -45,14 +52,17 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         _request.delegate = self
         setupNavigation()
         fetchData()
-        myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: 500))
+        myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height - 120 - navigationController!.navigationBar.frame.size.height))
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.register(UINib(nibName: "HeaderOrderConfirmCell", bundle: nil), forCellReuseIdentifier: "HeaderOrderConfirmCell")
         myTableView.register(UINib(nibName: "OrderProductCell", bundle: nil), forCellReuseIdentifier: "OrderProductCell")
         myTableView.register(UINib(nibName: "OrderTotalCell", bundle: nil), forCellReuseIdentifier: "OrderTotalCell")
         myTableView.register(UINib(nibName: "OrderInputInformCell", bundle: nil), forCellReuseIdentifier: "OrderInputInformCell")
-        myTableView.register(UINib(nibName: "OrderPaymentMethodCell", bundle: nil), forCellReuseIdentifier: "OrderPaymentMethodCell")
+         myTableView.register(UINib(nibName: "HeaderTypeCell", bundle: nil), forCellReuseIdentifier: "specialOffer")
+//        myTableView.register(UINib(nibName: "OrderPaymentMethodCell", bundle: nil), forCellReuseIdentifier: "OrderPaymentMethodCell")
+        myTableView.register(UINib(nibName: "PaymentMethodCell", bundle: nil), forCellReuseIdentifier: "PaymentMethodCell")
+
 //        myTableView.separatorStyle = .none
         myTableView.isScrollEnabled = true
         self.view.addSubview(myTableView)
@@ -60,21 +70,24 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        view.frame.size.height = 1000
-        myTableView.frame.size.height = 500
+        if index_payment_selec == nil {
+            btn_proses.isEnabled = false
+            btn_proses.backgroundColor = UIColor.lightGray
+        }
+        _request_diskon.delegate = self
+        _request_diskon.total = "\(self.total_price)"
+        _request_diskon.req()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        view.frame.size.height = 1000
-        myTableView.frame.size.height = 500
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if self.chart.count == 0 {
             return 0
         }
-        return 5
+        return 6
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -98,12 +111,35 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         }else if section == 4 {
             return 1
         }
+        else if section == 5 {
+            if total_price < 500000 {
+                return 1
+            }
+            return 5
+        }
         return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            tableView.backgroundColor = UIColor.red
+        if indexPath.section == 5 {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.tintColor = UIColor.blue
+                cell.accessoryType = .checkmark
+                self.index_payment_selec = indexPath.row
+                if index_payment_selec != nil {
+                    btn_proses.backgroundColor = UIColor.blue
+                    btn_proses.isEnabled = true
+                }
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            if indexPath.section == 5 {
+                cell.tintColor = UIColor.gray
+                cell.accessoryType = .checkmark
+            }
         }
     }
     
@@ -123,9 +159,20 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
             let cell = tableView.dequeueReusableCell(withIdentifier: "OrderTotalCell", for: indexPath) as! OrderTotalCell
             let price_total = total_price
             let price_ppn = (total_price * 10) / 100
-            let total_price_after = price_total + price_ppn
+            var total_price_after = price_total + price_ppn
+            var total_after_diskon = 0
             cell.price_total.text = "Rp. \(price_total.formatnumber())"
             cell.price_ppn.text = "Rp. \(price_ppn.formatnumber())"
+            if diskon != nil && diskon.data != nil {
+                if Int(diskon.data[0].discount_calc) != 0 {
+                    cell.diskon.isHidden = false
+                    cell.diskon_lbl.isHidden = false
+                    cell.diskon_lbl.text = diskon.data[0].discount_name
+                    cell.diskon.text = "- Rp. \(Int(diskon.data[0].discount_calc).formatnumber())"
+                    
+                    total_price_after = total_price_after - Int(diskon.data[0].discount_calc)
+                }
+            }
             cell.total_price_3.text = "Rp. \(total_price_after.formatnumber())"
             return cell
         }else if indexPath.section == 3 {
@@ -133,12 +180,20 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
             cell.delegate = self
             return cell
         }else if indexPath.section == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "OrderPaymentMethodCell", for: indexPath) as! OrderPaymentMethodCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "specialOffer", for: indexPath) as! HeaderTypeCell
+            return cell
+        }else if indexPath.section == 5 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentMethodCell", for: indexPath) as! PaymentMethodCell
             if total_price < 500000 {
-                cell.title.removeAll()
-                cell.title.append("Bayar Ditempat")
+                payment_option.removeAll()
+                payment_option_img.removeAll()
+                payment_option.append("Bayar Ditempat")
+                payment_option_img.append("delivery-truck-with-circular-clock")
             }
-            cell.delegate = self
+            cell.payment_label.text = payment_option[indexPath.row]
+            cell.payment_img.image = UIImage(named: payment_option_img[indexPath.row])
+            cell.tintColor = UIColor.gray
+            cell.accessoryType = .checkmark
             return cell
         }
         return UITableViewCell()
@@ -185,6 +240,12 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
     }
     
+    @IBAction func btnProsesClick(_ sender: Any) {
+        _request.chart = self.chart
+        _request.payment_type = payment_option[index_payment_selec!]
+        _request.payment_total = "\(total_price)"
+        _request.req()
+    }
     //Mark: Payment method
     func prosesDidclick(_ string: String) {
         _request.chart = self.chart
@@ -205,12 +266,23 @@ class OrderConfirmVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     func textField(_ String: String) {
         textInform = String
     }
+    
+    
+    //MARK: DISKON DELEGATE
+    func diskonGetSuccess(data: DiskonModel) {
+        self.diskon = data
+        myTableView.reloadData()
+    }
+    
+    func diskonGetError(data: String) {
+        FTIndicator.showToastMessage("Koneksi bermasalah")
+    }
 }
 
 extension OrderConfirmVC {
     func setupNavigation() {
         navigationController?.defaultStyle()
-        //        title = "Register"
+        title = "Konfirmasi Pesanan"
         let leftBarButton = UIBarButtonItem(image: UIImage(named: "ic_backBtn"), style: .plain, target: self, action: #selector(popViewController))
         navigationItem.leftBarButtonItem = leftBarButton
     }

@@ -10,7 +10,7 @@ import UIKit
 
 class BannerCell: UITableViewCell {
 
-    var bannerUrl: String = "http://202.154.3.188/commerce/production/uploads/"
+    var bannerUrl: String = "\(BaseUrl.baseUrl)commerce/production/uploads/"
     @IBOutlet weak var bannerImage: UIImageView!
     
     override func awakeFromNib() {

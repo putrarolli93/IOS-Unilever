@@ -59,7 +59,7 @@ class ContinueOrderRequest {
             ]
         ]
         
-        Alamofire.request("http://202.154.3.188/commerce/unilever-middleware/core-services/order/save", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
+        Alamofire.request("\(BaseUrl.baseUrl)commerce/unilever-middleware/core-services/order/save", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil)
             .responseJSON { response in
                 let result = response.result.value
                 if let responses = Mapper<PurchaseModel>().map(JSONObject: result as AnyObject) {

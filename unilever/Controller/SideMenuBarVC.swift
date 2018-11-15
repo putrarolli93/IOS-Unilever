@@ -7,20 +7,35 @@
 //
 
 import UIKit
+import SideMenuController
 
 class SideMenuBarVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private let myArray: NSArray = ["First","Second","Third"]
     private var myTableView: UITableView!
-    
+    var fromLogin: LoginVC = LoginVC()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        addTableView()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        removeTableView()
+    }
+    
+    func addTableView() {
         
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
-
+        
         myTableView = UITableView(frame: CGRect(x: 0, y: -20, width: displayWidth, height: displayHeight + barHeight))
         //myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         myTableView.delegate = self
@@ -28,7 +43,14 @@ class SideMenuBarVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         myTableView.register(UINib(nibName: "HeaderCell", bundle: nil), forCellReuseIdentifier: "header")
         myTableView.register(UINib(nibName: "MenuListCell", bundle: nil), forCellReuseIdentifier: "menuList")
         self.view.addSubview(myTableView)
-
+    }
+    
+    func removeTableView() {
+        myTableView.removeFromSuperview()
+    }
+    
+    func reloadTableView() {
+        myTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -65,6 +87,7 @@ class SideMenuBarVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }else if indexPath.row == 5 {
             let prefs = UserDefaults.standard
             prefs.removeObject(forKey:"session")
+            prefs.removeObject(forKey:"image")
             self.present(LoginVC(), animated: true, completion: nil)
         }
     }
@@ -88,7 +111,7 @@ class SideMenuBarVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             if UserDefaults.standard.array(forKey: "session") != nil {
                 cell.store_name.text = "\(UserDefaults.standard.array(forKey: "session")![1])"
                 cell.info_name.text = "\(UserDefaults.standard.array(forKey: "session")![2])"
-                if let image_photo: String = ProfileVC.image_photo {
+                if let image_photo: String =  UserDefaults.standard.string(forKey: "image") {
                      cell.user_image.sd_setImage(with: URL(string: image_photo), placeholderImage: UIImage(named: "placeholder.png"))
                 }
             }

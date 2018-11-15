@@ -33,13 +33,13 @@ class OrderWebviewVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateToTimeStamp()
+//        dateToTimeStamp()
         setupNavigation()
         if pickerPayment == "Bayar Ditempat" {
             paymentMethod = 1
         }else if pickerPayment == "Giro" {
             paymentMethod = 2
-        }else if pickerPayment == "Transfer Bank" {
+        }else if pickerPayment == "Transfer Bank" || pickerPayment == "Bank Transfer" {
             paymentMethod = 36
         }else if pickerPayment == "Kartu Kredit" {
             paymentMethod = 15
@@ -52,7 +52,7 @@ class OrderWebviewVC: UIViewController {
         self.WORDS = "\(totalPurchase)\(DOKU_MALL_ID)\(SHAREDKEY)\(TRANSIDMERCHANT)"
         let newWords = WORDS.sha1()
         wordFromEncryp = newWords.replacingOccurrences(of: " ", with: "").lowercased()
-        timeFormat = Int(Date().ticks)
+//        timeFormat = Int(Date().ticks)
         var request = URLRequest(url: URL(string: "https://staging.doku.com/Suite/Receive")!)
         request.httpMethod = "POST"
         let postString = "BASKET=Item 1,10000.00,1,10000.00&MALLID=\(DOKU_MALL_ID)&CHAINMERCHANT=\(CHAINMERCHANT)&CURRENCY=\(CURRENCY)&PURCHASECURRENCY=\(PURCHASECURRENCY)&AMOUNT=\(totalPurchase)&PURCHASEAMOUNT=\(totalPurchase)&TRANSIDMERCHANT=\(TRANSIDMERCHANT)&SHAREDKEY=\(SHAREDKEY)&PAYMENTCHANNEL=\(paymentMethod)&WORDS=\(wordFromEncryp)&REQUESTDATETIME=\(TRANSIDMERCHANT)&SESSIONID=\(TRANSIDMERCHANT)&EMAIL=test@doku.com&NAME=test&MOBILEPHONE=0215150555"

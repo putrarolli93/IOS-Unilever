@@ -9,7 +9,7 @@
 import UIKit
 import SideMenuController
 
-class DefaultController: UINavigationController {
+class DefaultController: UINavigationController,SideMenuControllerDelegate {
     
     static var indexOftabbar: Int = 0
     
@@ -18,6 +18,11 @@ class DefaultController: UINavigationController {
         isNavigationBarHidden = true
         showHome()
         setupNavigation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
     }
     
     func setupNavigation() {
@@ -32,13 +37,13 @@ class DefaultController: UINavigationController {
     
     func showHome() {
         let sideMenuViewController = SideMenuController()
-        
+        sideMenuViewController.delegate = self
         // create the view controllers for center containment
         let vc1 = HomeVC()
         vc1.view.backgroundColor = UIColor.white
         //        vc1.title = "first"
         //        navigationItem.titleView = UIImageView(image: UIImage(named: "logo"))
-        vc1.navigationItem.titleView = UIImageView(image: UIImage(named: "unilever_brand"))
+        vc1.navigationItem.titleView = UIImageView(image: UIImage(named: "logo_500x500"))
         
         //------------------
         //        let label = UILabel(frame: CGRect(x: LoginVC.screenSize.width - 25, y: 0, width: 20, height: 20))
@@ -60,7 +65,7 @@ class DefaultController: UINavigationController {
         
         let vc2 = MyOrderVC()
         vc2.view.backgroundColor = UIColor.white
-        vc2.navigationItem.titleView = UIImageView(image: UIImage(named: "unilever_brand"))
+        vc2.navigationItem.titleView = UIImageView(image: UIImage(named: "logo_500x500"))
         vc2.navigationItem.rightBarButtonItem = rightBarButton
         //        vc2.title = "second"
         let nc2 = UINavigationController(rootViewController: vc2)
@@ -69,7 +74,7 @@ class DefaultController: UINavigationController {
         let vc3 = InvoiceVC()
         vc3.view.backgroundColor = UIColor.white
         //        vc3.title = "third"
-        vc3.navigationItem.titleView = UIImageView(image: UIImage(named: "unilever_brand"))
+        vc3.navigationItem.titleView = UIImageView(image: UIImage(named: "logo_500x500"))
         vc3.navigationItem.rightBarButtonItem = rightBarButton
         let nc3 = UINavigationController(rootViewController: vc3)
         nc3.tabBarItem = UITabBarItem(title: "Tagihan", image: UIImage(named: "ic_order"),tag: 1)
@@ -77,7 +82,8 @@ class DefaultController: UINavigationController {
         let vc4 = ProfileVC()
         vc4.view.backgroundColor = UIColor.white
         //        vc4.title = "fourth"
-        vc4.navigationItem.titleView = UIImageView(image: UIImage(named: "unilever_brand"))
+        vc4.navigationItem.titleView = UIImageView(image: UIImage(named: "logo_500x500"))
+        vc4.navigationItem.titleView?.sizeToFit()
         vc4.navigationItem.rightBarButtonItem = rightBarButton
         let nc4 = UINavigationController(rootViewController: vc4)
         nc4.tabBarItem = UITabBarItem(title: "Profil", image: UIImage(named: "ic_profile_new"),tag: 1)
@@ -105,4 +111,13 @@ class DefaultController: UINavigationController {
     func searchIconTapped() {
         //        tabBarController?.selectedIndex = 1
     }
+    
+    func sideMenuControllerDidHide(_ sideMenuController: SideMenuController) {
+        print("tutup")
+    }
+    
+    func sideMenuControllerDidReveal(_ sideMenuController: SideMenuController) {
+        
+    }
+    
 }

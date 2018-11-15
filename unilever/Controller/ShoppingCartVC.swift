@@ -34,7 +34,7 @@ class ShoppingCartVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.total_price = 0
         fetchData()
         if data_count == 0 {
-            self.shopping_total.text = "0"
+            self.shopping_total.text = "Rp. 0"
         }
         myTableView.reloadData()
     }
@@ -45,7 +45,7 @@ class ShoppingCartVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.total_price = 0
         fetchData()
         if data_count == 0 {
-            self.shopping_total.text = "0"
+            self.shopping_total.text = "Rp. 0"
         }
         myTableView.reloadData()
     }
@@ -134,7 +134,7 @@ class ShoppingCartVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             let string_image = "\(chart[indexPath.row][1])"
             let updatedUrl = string_image.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
             cell.product_image.sd_setImage(with: URL(string: updatedUrl!), placeholderImage: UIImage(named: "placeholder.png"))
-            cell.product_price.text = chart[indexPath.row][4]
+            cell.product_price.text = "Rp. \(Int(chart[indexPath.row][4])!.formatnumber())"
         }
         return cell
     }
@@ -178,11 +178,11 @@ class ShoppingCartVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print(_datecreated.product_name!)
                 self.data_count = dateCreated.count
                 if data_count == 0 {
-                    shopping_total.text = "0"
+                    shopping_total.text = "Rp. 0"
                 }
                 self.total_price += Int(_datecreated.product_selling_price!)! * Int(_datecreated.product_qty!)!
                 print("total harga: \(self.total_price)")
-                self.shopping_total.text = "\(self.total_price)"
+                self.shopping_total.text = "Rp. \(self.total_price.formatnumber())"
                 print(i)
                 chart[i].append(_datecreated.product_name!)
                 chart[i].append(_datecreated.product_photo_link!)
@@ -251,7 +251,7 @@ class ShoppingCartVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.total_price = 0
         fetchData()
         if data_count == 0 {
-            self.shopping_total.text = "0"
+            self.shopping_total.text = "Rp. 0"
             self.order_btn.isHidden = true
             addLabel()
         }else{
@@ -310,7 +310,7 @@ class ShoppingCartVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //MARK CREDIT LIMIT
     func creditLimitSuccess(data: CreditLimitModel) {
-        if Int(Double(data.total_credit_limit)!) < Int(shopping_total.text!)! {
+        if Int(Double(data.total_credit_limit)!) < self.total_price {
             credit_limit = false
         }else{
             credit_limit = true
@@ -319,10 +319,14 @@ class ShoppingCartVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         if chart.count != 0 {
             if credit_limit {
                 let web = OrderConfirmVC()
-                web.total_price = Int(shopping_total.text!)!
+                web.total_price = self.total_price
                 let navCon = UINavigationController()
                 navCon.viewControllers = [web]
                 self.present(navCon, animated: true, completion: nil)
+            }else{
+                let alert = UIAlertController(title: "Notifikasi", message: "Total pembelian anda sudah melebihi batas kredit Rp.\(Int(Double(data.total_credit_limit)!).formatnumber())", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "TUTUP", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }

@@ -136,8 +136,8 @@ class EditProfileVC: UIViewController,EditProfileDelegate,UITextFieldDelegate {
     }
     
     //MARK: UPDATE PROFILE
-    func editProfileSuccess(data: PurchaseModel) {
-        if data.response_code == "01" {
+    func editProfileSuccess(data: EditProfileModel) {
+        if data.response_code == 01 {
             let alert = UIAlertController(title: "Alert", message: "Register Failed", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil )
